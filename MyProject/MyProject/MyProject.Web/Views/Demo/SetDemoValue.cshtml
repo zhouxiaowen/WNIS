@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Module";
+
+}
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            @*全屏使用*@
+            <div class="widget-header bordered-bottom bordered-sky " style="">
+                <span class="widget-caption"><i class="fa fa-cogs"></i>&nbsp;菜单模块</span>
+                <div class="widget-buttons">
+                    <a href="#" id="fullscreen-toggler" class="fullscreen">
+                        <i class="glyphicon glyphicon-fullscreen"></i>
+                    </a>
+                    <a href="#" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="sidebar-toggler" href="#">
+                        <i class="fa fa-arrows-h"></i>
+                    </a>
+                    @*<a href="#" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a href="#" data-toggle="dispose">
+                            <i class="fa fa-times"></i>
+                        </a>*@
+                </div>
+            </div>
+            <div class="widget-body no-padding">
+                <div class="container-fluid">
+                    <div class="row" style="padding:10px 0px;">
+                        <div class="col-md-12">
+                            <a class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+                            <a class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-plus"></i>&nbsp;新增</a>
+                            <a class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-edit"></i>&nbsp;编辑</a>
+                            <a class="btn btn-darkorange" href="javascript:void(0);"><i class="fa fa-delicious"></i>&nbsp;删除</a>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="row" style="padding:0px 10px;">
+                        <a id="btn_sendperson" class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-refresh"></i>&nbsp;添加压力测试人员数据</a>
+                    </div>
+                    <div class="row">
+                        底部
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $("#btn_sendperson").click(function () {
+            SendPerson();
+        });
+    })
+
+    function SendPerson() {
+        var json = {
+            "RYID": "", "RYXM": "压力测试人员21", "RYGH": "", "PYM": "YLCSRY1", "KSID": "89203645-b128-11e6-b36e-00163e0d89bc",
+            "KSMC": "骨科", "ZCDM": "252", "ZCMC": "副主任护师", "GYSID": "14e5622d-c6ab-11e6-8949-00163e0d89bc", "GYSMC": "院内药房", "ZYYSBH": "",
+            "ZJBZ": "0", "KBID": "", "KBMC": "", "GHF": "", "ZLF": "", "SCBZ": 0, "ListEmployeeInfoGWItem": [{ "ZWDM": "5", "ZWMC": "出院结账" },
+                { "ZWDM": "4", "ZWMC": "发药窗口" }, { "ZWDM": "2", "ZWMC": "挂号收费员" }, { "ZWDM": "8", "ZWMC": "门诊护士" }, { "ZWDM": "1", "ZWMC": "门诊医生" },
+                { "ZWDM": "3", "ZWMC": "药房人员" }, { "ZWDM": "7", "ZWMC": "住院护士" }, { "ZWDM": "6", "ZWMC": "住院医生" }]
+        };
+        var xhrurl = 'http://183.134.76.240:8888/api/services/app/PowerSet/EmployeeSave';
+        var url = 'http://www.t1.com/index.php';
+        debugger;
+        $.ajax({
+            type: 'post',
+            url: xhrurl,
+            data: json,
+            dataType: 'jsonp',
+            success: function (result) {
+                console.log(result);
+            }
+        });
+        
+    }
+</script>

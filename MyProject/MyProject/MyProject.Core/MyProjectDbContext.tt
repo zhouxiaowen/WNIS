@@ -1,0 +1,254 @@
+﻿<#@ assembly name="System.Data" #>
+<#@ assembly name="System.xml" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ output extension=".txt" #>
+<#@ include file="MultiOutput.tt" #>
+<# 
+	List<string> tableNameList = SqlHelper.GetTableNameList();
+    foreach (var tableName in tableNameList)
+    {
+#>
+using System;
+using Abp.Domain.Entities;
+
+public class <#= tableName #>:Entity
+{
+<#
+		DataTable dt =  SqlHelper.GetColumnsByTableName(tableName);
+        foreach (DataRow rowItem in dt.Rows)
+        {
+			var zdm = rowItem["字段名"].ToString();
+            if (zdm.ToLower() != "id")
+            {
+#>
+    /// <summary>
+    /// <#= rowItem["说明"]#>
+    /// </summary>
+	<#= "public "+SqlHelper.GetFieldType(rowItem["类型"].ToString(),rowItem["允许空"].ToString())+" " + zdm + "{ get; set; }" #>
+
+<#
+        }
+    }
+#>
+}
+<# SaveOutput(tableName+".cs"); #>
+<# 
+}
+#>
+
+using System.Data.Common;
+using Abp.EntityFramework;
+using System.Data.Entity;
+
+namespace MyProject.EntityFramework
+{
+    public class MyProjectDbContext : AbpDbContext
+    {
+        //TODO: Define an IDbSet for each Entity...
+
+        //Example:
+        //public virtual IDbSet<User> Users { get; set; }
+		<# 
+			foreach (var tableName in tableNameList)
+			{
+		#>
+		<#= "public virtual IDbSet<"+tableName+"> "+tableName+"s { get; set; } "#>
+		<# } #>
+        /* NOTE: 
+         *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
+         *   But it may cause problems when working Migrate.exe of EF. If you will apply migrations on command line, do not
+         *   pass connection string name to base classes. ABP works either way.
+         */
+        public MyProjectDbContext()
+            : base("Default")
+        {
+
+        }
+
+        /* NOTE:
+         *   This constructor is used by ABP to pass connection string defined in MyProjectDataModule.PreInitialize.
+         *   Notice that, actually you will not directly create an instance of MyProjectDbContext since ABP automatically handles it.
+         */
+        public MyProjectDbContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
+
+        }
+
+        //This constructor is used in tests
+        public MyProjectDbContext(DbConnection existingConnection)
+         : base(existingConnection, false)
+        {
+
+        }
+
+        public MyProjectDbContext(DbConnection existingConnection, bool contextOwnsConnection)
+         : base(existingConnection, contextOwnsConnection)
+        {
+
+        }
+    }
+}
+
+<# SaveOutput("MyProjectDbContext.cs"); #>
+
+<#+ 
+public class SqlHelper
+{
+	public const string connectionString= "server=.\\sqlexpress;database=WNIS;uid=sa;pwd=a123;";
+	public static SqlConnection conn = new SqlConnection(connectionString);
+	public static List<string> GetTableNameList()
+    {
+		List<string> tableNameList = new List<string>();
+		conn.Open();
+		System.Data.DataTable schema = conn.GetSchema("Tables");   //Views
+		foreach(System.Data.DataRow row in schema.Rows)
+		{    
+			string tb_name= row["TABLE_NAME"].ToString();
+			tableNameList.Add(tb_name);
+		}
+		conn.Close();  
+
+		return tableNameList;
+	}
+
+	public static DataTable GetColumnsByTableName(string tableName)
+    {
+		string selectQuery =
+            @"
+            SELECT (case when a.colorder=1 then d.name else null end) 表名, a.colorder 字段序号,a.name 字段名,
+            (case when COLUMNPROPERTY( a.id,a.name,'IsIdentity')=1 then '√'else '' end) 标识, 
+            (case when (SELECT count(*) FROM sysobjects  WHERE (name in (
+            SELECT name FROM sysindexes  WHERE (id = a.id) AND (indid in  
+            (SELECT indid FROM sysindexkeys  WHERE (id = a.id) AND (colid in  
+            (SELECT colid FROM syscolumns WHERE (id = a.id) AND (name = a.name)))))))  
+            AND (xtype = 'PK'))>0 then '√' else '' end) 主键,b.name 类型,a.length 占用字节数,  
+            COLUMNPROPERTY(a.id,a.name,'PRECISION') as 长度,  
+            isnull(COLUMNPROPERTY(a.id,a.name,'Scale'),0) as 小数位数,(case when a.isnullable=1 then '√'else '' end) 允许空,  
+            isnull(e.text,'') 默认值,isnull(g.[value], ' ') AS [说明]
+            FROM  syscolumns a 
+            left join systypes b on a.xtype=b.xusertype  
+            inner join sysobjects d on a.id=d.id and d.xtype='U' and d.name<>'dtproperties' 
+            left join syscomments e on a.cdefault=e.id  
+            left join sys.extended_properties g on a.id=g.major_id AND a.colid=g.minor_id
+            left join sys.extended_properties f on d.id=f.class and f.minor_id=0
+            --where b.name is not null
+            --WHERE d.name='TestTB' --如果只查询指定表,加上此条件
+            WHERE d.NAME = '" + tableName + @"' --如果只查询指定表,加上此条件
+            order by a.id,a.colorder
+            ";
+		conn.Open();
+		SqlCommand command = new SqlCommand(selectQuery,conn);
+        SqlDataAdapter ad = new SqlDataAdapter(command);
+        System.Data.DataSet ds = new DataSet(); 
+        ad.Fill(ds);
+		conn.Close();  
+		return ds.Tables[0];
+	}
+
+	public static string GetFieldType(string typeName)
+    {
+		string fieldType="";
+            switch(typeName){
+                case "bit":
+                    fieldType="bool";
+                    break;
+                case "int":
+                    fieldType="int";
+                    break;
+                case "smallint":
+                    fieldType="int";
+                    break;
+                case "tinyint":
+                    fieldType="int";
+                    break;
+                case "bigint":
+                    fieldType="Int64";
+                    break;
+                case "float":
+                    fieldType="float";
+                    break;
+                case "double":
+                    fieldType="float";
+                    break;
+                case "decimal":
+                    fieldType="decimal";
+                    break;
+                case "datetime":
+                    fieldType="DateTime";
+                    break;
+                case "date":
+                    fieldType="DateTime";
+                    break;
+                case "smalldatetime":
+                    fieldType="DateTime";
+                    break;
+                case "timestamp":
+                    fieldType="int";
+                    break;
+                
+                default:
+                    fieldType="string";
+                    break;
+			}
+		return fieldType;
+	}
+
+	public static string GetFieldType(string typeName,string isNull)
+    {
+        if (string.IsNullOrEmpty(isNull))
+        {
+			return GetFieldType(typeName);
+        }else{
+			string fieldType="";
+            switch(typeName){
+                case "bit":
+                    fieldType="bool";
+                    break;
+                case "int":
+                    fieldType="int?";
+                    break;
+                case "smallint":
+                    fieldType="int?";
+                    break;
+                case "tinyint":
+                    fieldType="int?";
+                    break;
+                case "bigint":
+                    fieldType="int?";
+                    break;
+                case "float":
+                    fieldType="float";
+                    break;
+                case "double":
+                    fieldType="float";
+                    break;
+                case "decimal":
+                    fieldType="decimal?";
+                    break;
+                case "datetime":
+                    fieldType="DateTime?";
+                    break;
+                case "date":
+                    fieldType="DateTime?";
+                    break;
+                case "smalldatetime":
+                    fieldType="DateTime?";
+                    break;
+                case "timestamp":
+                    fieldType="int?";
+                    break;
+                
+                default:
+                    fieldType="string";
+                    break;
+			}
+			return fieldType;
+		}
+	}
+}
+#>

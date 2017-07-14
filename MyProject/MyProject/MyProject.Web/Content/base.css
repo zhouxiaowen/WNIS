@@ -1,0 +1,119 @@
+﻿.btn {
+    line-height:1;
+    border-radius:0px;
+}
+
+/*更改总体布局样式*/
+.page-body {
+    padding:0px;
+    margin-top:-2px;
+}
+.widget-header {
+    box-shadow: none;
+    background-color: #fbfbfb;
+    padding-right:15px;
+}
+.widget-header.bordered-bottom{
+    border:0px;
+
+}
+.widget-header > .widget-caption {
+    padding-left:12px;
+    padding-top:14px;
+}
+    .widget-header hr {
+        margin-bottom: 0px;
+        background-color: #fbfbfb;
+        height:1px;
+    }
+.widget-buttons {
+    top:15px;
+    right:15px;
+}
+/*表格样式修正*/
+.dataTables_paginate {
+    text-align: right;
+    padding: 5px 0px;
+}
+.dataTables_info {
+    padding:5px 0px;
+}
+
+/*更改bootstrap样式*/
+.form-group {
+    margin-bottom: 5px;
+}
+.form-control {
+    border-radius:0px;
+}
+
+/*弹出编辑框样式*/
+.control-label {
+    margin-top: 5px;
+}
+.Edit-Footer {
+    position:absolute;
+    height:40px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    text-align:center;
+    padding:6px 0px;
+    border-top:1px solid #ddd;
+}
+
+input:-moz-placeholder {
+    color:green;
+}
+
+/*验证样式修改*/
+.form-control-feedback {
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    position: absolute;
+    right: 17px;
+    text-align: center;
+    top: 0;
+    width: 25px;
+    z-index: 2;
+}
+.valdiv {
+    position: absolute;
+    top: 35px;
+    width: 90%;
+    z-index: 998;
+    display: none;
+    background-color: #fffafa;
+    border: 1px solid #f8bbbb;
+    padding-left: 4px;
+}
+
+/*常见样式*/
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align:right;
+}
+
+.padding-top-5 {
+    padding-top: 5px;
+}
+
+.padding-btm-5 {
+    padding-bottom:5px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+label {
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 5px;
+    max-width: 100%;
+}
