@@ -135,6 +135,9 @@
     <Compile Include="Sys_LSH.cs">
       <DependentUpon>MyProjectDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sys_MenuModule.cs">
+      <DependentUpon>MyProjectDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sys_User.cs">
       <DependentUpon>MyProjectDbContext.tt</DependentUpon>
     </Compile>

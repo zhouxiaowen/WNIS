@@ -6,7 +6,7 @@ public class Sys_User:Entity
     /// <summary>
     /// 用户id
     /// </summary>
-	public string UId{ get; set; }
+	public int UId{ get; set; }
 
     /// <summary>
     /// 工号

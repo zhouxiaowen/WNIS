@@ -1,4 +1,3 @@
-
 using System;
 using Abp.Domain.Entities;
 
@@ -17,7 +16,7 @@ public class Sys_LSH:Entity
     /// <summary>
     /// 流水号
     /// </summary>
-	public Int64 Code{ get; set; }
+	public int Code{ get; set; }
 
     /// <summary>
     /// 创建时间

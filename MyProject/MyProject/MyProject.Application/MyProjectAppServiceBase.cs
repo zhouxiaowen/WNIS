@@ -51,7 +51,7 @@ namespace MyProject
             return output;
         }
 
-        public Int64 GetLSH(string category, string name,int step)
+        public int GetLSH(string category, string name,int step)
         {
             var output = GetLSH(new SysLSHInput()
             {
@@ -62,7 +62,7 @@ namespace MyProject
             return output.Code;
         }
 
-        public Int64 GetLSH(string category, string name)
+        public int GetLSH(string category, string name)
         {
             return GetLSH(category, name,1);
         }

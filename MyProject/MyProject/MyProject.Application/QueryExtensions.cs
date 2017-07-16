@@ -29,7 +29,7 @@ namespace MyProject
             }
             else
             {
-                query = query.OrderBy("ID Desc");
+                query = query.OrderBy("Id Desc");
             }
 
             //Try to use paging if available

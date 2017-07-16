@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyProject.Users.Dto
+namespace MyProject.Sys.Dto
 {
     #region Insert
     [AutoMapTo(typeof(Sys_User))]
@@ -16,7 +16,7 @@ namespace MyProject.Users.Dto
         /// <summary>
         /// 用户Id
         /// </summary>
-        public string UId { get; set; }
+        public int? UId { get; set; }
         /// <summary> 
         /// 工号
         /// </summary> 
@@ -42,15 +42,15 @@ namespace MyProject.Users.Dto
 
     public class SysUserOutput
     {
-        public int? ID { get; set; }
+        public int UId { get; set; }
         public string Message { get; set; }
 
         public SysUserOutput() { }
 
-        public SysUserOutput(string message, int? ID)
+        public SysUserOutput(string message, int UId)
         {
             this.Message = message;
-            this.ID = ID;
+            this.UId = UId;
         }
     }
     #endregion
@@ -58,7 +58,7 @@ namespace MyProject.Users.Dto
     #region Detail
     public class SysUserDetailInput
     {
-        public string UId { get; set; }
+        public int UId { get; set; }
     }
 
     [AutoMapFrom(typeof(Sys_User))]
@@ -79,7 +79,7 @@ namespace MyProject.Users.Dto
 
         public void Normalize()
         {
-            //base.Sorting = "PX,DLMC";
+            base.Sorting = "ID Desc";
         }
     }
 
@@ -89,7 +89,7 @@ namespace MyProject.Users.Dto
         /// <summary>
         /// 用户id
         /// </summary>
-        public string UId { get; set; }
+        public int UId { get; set; }
 
         /// <summary> 
         /// 工号
@@ -99,7 +99,7 @@ namespace MyProject.Users.Dto
         /// <summary> 
         /// Id 
         /// </summary> 
-        public int ID { set; get; }
+        public int Id { set; get; }
 
         /// <summary> 
         /// 最后登陆IP
@@ -132,15 +132,15 @@ namespace MyProject.Users.Dto
 
     public class SysUserDelInput
     {
-        public string UId { get; set; }
+        public int UId { get; set; }
     }
 
     public class SysUserDelOutput
     {
-        public string UId { get; set; }
+        public int UId { get; set; }
         public SysUserDelOutput()
         { }
-        public SysUserDelOutput(string message,string uid)
+        public SysUserDelOutput(string message,int uid)
         {
             this.Message = message;
             this.UId = uid;
@@ -156,7 +156,7 @@ namespace MyProject.Users.Dto
         /// <summary> 
         /// Id
         /// </summary> 
-        public int? Id { set; get; }
+        public int UId { set; get; }
 
     }
 

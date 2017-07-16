@@ -1,6 +1,7 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Application.Services;
+using Abp.Domain.Repositories;
 using AutoMapper;
-using MyProject.Users.Dto;
+using MyProject.Sys.Dto;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,8 +9,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyProject.Users
+namespace MyProject.Sys
 {
+    public interface ISysUserAppService : IApplicationService
+    {
+
+        /// <summary>
+        /// 查询系统用户列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        SysUserQueryOutput QuerySysUser(SysUserQueryInput input);
+
+
+        /// <summary>
+        /// 查询单个详情
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        SysUserDetailOutput QuerySysUserDetail(SysUserDetailInput input);
+
+        /// <summary>
+        /// 添加或编辑
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        SysUserOutput AddOrUpdateSysUser(SysUserInput input);
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        SysUserDelOutput DeleteSysUser(SysUserDelInput input);
+
+        /// <summary>
+        /// 判断是否存在
+        /// </summary>
+        /// <param name="input"></param>
+        SysUserIsExistOutput GetSysUserIsExist(SysUserIsExistInput input);
+    }
+
     public class SysUserAppService : MyProjectAppServiceBase, ISysUserAppService
     {
         private readonly IRepository<Sys_User> _repositorySys_User;
@@ -35,7 +75,7 @@ namespace MyProject.Users
 
             var query = tmpQuery.Select(obj => new SysUserQueryItem()
             {
-                ID = obj.Id,
+                Id = obj.Id,
                 UId = obj.UId,
                 Code = obj.Code,
                 LastIP = obj.LastIP,
@@ -63,7 +103,7 @@ namespace MyProject.Users
         /// <returns></returns>
         public SysUserDetailOutput QuerySysUserDetail(SysUserDetailInput input)
         {
-            if (input == null || input.UId == null )
+            if (input == null)
             {
                 return null;
             }
@@ -85,20 +125,24 @@ namespace MyProject.Users
             bool res = false;
             Sys_User tmp = null;
             
-                //AutoMapper.Mapper.Map<SysUserInput, Sys_User>(input);
+            //AutoMapper.Mapper.Map<SysUserInput, Sys_User>(input);
             //此处可以放一些参数的处理，比如排序为null则赋值为0，删除标志位null则为0
 
-            if (string.IsNullOrEmpty(input.UId))
+            if (input.UId == null)
             {
-                Sys_User sysuser = new Sys_User()
-                {
-                    UId = GetLSH("系统管理","系统用户ID").ToString(),
-                    Code = input.Code,
-                    Name = input.Name,
-                    Password = input.Password,
-                    Status = input.Status,
-                    LastTime = DateTime.Now
-                };
+                Sys_User sysuser = AutoMapper.Mapper.Map<SysUserInput, Sys_User>(input);
+                sysuser.UId = GetLSH("系统管理", "系统用户ID");
+                sysuser.LastTime = DateTime.Now;
+
+                //Sys_User sysuser = new Sys_User()
+                //{
+                //    UId = GetLSH("系统管理","系统用户ID"),
+                //    Code = input.Code,
+                //    Name = input.Name,
+                //    Password = input.Password,
+                //    Status = input.Status,
+                //    LastTime = DateTime.Now
+                //};
                 tmp = _repositorySys_User.Insert(sysuser);
                 res = tmp == null ? false : true;
             }
@@ -120,7 +164,7 @@ namespace MyProject.Users
             ////如果是C开头的表，要删除对应的缓存
             ////this.ClearTenantCache<Sys_User>();
 
-            return res ? new SysUserOutput("", tmp == null ? 1 : tmp.Id) : new SysUserOutput("保持系统用户信息过程中发生错误",0);
+            return res ? new SysUserOutput("", tmp == null ? 1 : tmp.UId) : new SysUserOutput("保持系统用户信息过程中发生错误",0);
         }
 
         /// <summary>
@@ -150,7 +194,7 @@ namespace MyProject.Users
         {
             //此处规则自己修正
             //var drug = _repositorySys_User.FirstOrDefault(obj => obj.YSMC.ToUpper() == input.YSMC.ToUpper() && obj.Id != input.YSID);
-            var drug = _repositorySys_User.FirstOrDefault(obj => obj.Id == input.Id);
+            var drug = _repositorySys_User.FirstOrDefault(obj => obj.UId == input.UId);
             SysUserIsExistOutput result = new SysUserIsExistOutput();
             result.IsExist = drug == null ? false : true;
             return result;

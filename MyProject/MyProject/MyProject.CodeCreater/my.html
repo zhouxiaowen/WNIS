@@ -1,0 +1,109 @@
+
+
+
+
+
+@{
+    ViewBag.Title = "Module";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            @*全屏使用*@
+            <div class="widget-header bordered-bottom" style="">
+                <span class="widget-caption"><i class="fa fa-cogs"></i>&nbsp;菜单模块管理</span>
+                <div class="widget-buttons">
+                    <a href="#" id="fullscreen-toggler" class="fullscreen">
+                        <i class="glyphicon glyphicon-fullscreen"></i>
+                    </a>
+                    <a href="#" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="sidebar-toggler" href="#">
+                        <i class="fa fa-arrows-h"></i>
+                    </a>
+                </div>
+                <hr />
+            </div>
+            
+            <div  id="main" class="widget-body no-padding">
+                <div class="container-fluid">
+                    <div class="row" style="padding:10px 0px;">
+                        <div class="col-md-12">
+                            <a id="BtnRefresh" class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+                            <a id="BtnAdd" class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-plus"></i>&nbsp;新增</a>
+                        </div>
+                    </div>
+                    <div class="row padding-btm-5">
+                        <div class="col-md-12 form-inline">
+                            <input type="text" placeholder="请输入关键字" id="TxtKey" class="form-control"  style="width:200px;height:28px;">
+                            &nbsp;
+                            <a id="BtnSearch" class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding:0px 10px;">
+                        <table class="table table-bordered table-hover table-striped" id="GridUser">
+                            <thead class="">
+                                @*bordered-blueberry*@
+                                <tr role="row">
+                                    <th style="width:60px;">编辑</th>
+                                    <th style="width:60px;">删除</th>
+									<th>编码</th>
+									<th>名称</th>
+									<th>链接地址</th>
+									<th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="SpanEdit" style="display:none;">
+    <div class="container-fluid">
+        <form  id="EditForm" onsubmit="return false;">
+            <input type="hidden" id="TxtId" />
+			<div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right">*编码：</label>
+                <div class="col-sm-9">
+                    <input type="text"  placeholder=""  id="TxtCode" class="form-control" name="ucode">
+                </div>
+            </div>
+			<div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right">*名称：</label>
+                <div class="col-sm-9">
+                    <input type="text"  placeholder=""  id="TxtName" class="form-control" name="uname">
+                </div>
+            </div>
+			<div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right">*链接地址：</label>
+                <div class="col-sm-9">
+                    <input type="text"  placeholder=""  id="TxtLinkUrl" class="form-control" name="ulinkurl">
+                </div>
+            </div>
+			<div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right">*状态：</label>
+                <div class="col-sm-9">
+                    <input type="text"  placeholder=""  id="TxtStatus" class="form-control" name="ustatus">
+                </div>
+            </div>
+           
+            <div class="Edit-Footer">
+                <button type="submit" class="btn btn-info" id="BtnSubmit"><i class="fa fa-check"></i>&nbsp;提交</button>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                <button type="button" class="btn btn-darkorange" id="BtnCancel"><i class="fa fa-close"></i>&nbsp;取消</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Content/Sys/scripts/MenuModule.js"></script>
+
+

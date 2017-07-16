@@ -38,7 +38,7 @@ namespace MyProject.Common.Dto
         /// <summary> 
         /// 流水号
         /// </summary> 
-        public Int64 Code { set; get; }
+        public int Code { set; get; }
 
 
         /// <summary> 

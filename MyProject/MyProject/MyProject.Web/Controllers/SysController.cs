@@ -13,5 +13,10 @@ namespace MyProject.Web.Controllers
         {
             return View();
         }
+        // 菜单模块
+        public ActionResult MenuModule()
+        {
+            return View();
+        }
     }
 }

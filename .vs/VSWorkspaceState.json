@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MyProject",
+    "\\MyProject\\MyProject",
+    "\\MyProject\\MyProject\\MyProject.Web",
+    "\\MyProject\\MyProject\\MyProject.Web\\Content",
+    "\\MyProject\\MyProject\\MyProject.Web\\Content\\Sys",
+    "\\MyProject\\MyProject\\MyProject.Web\\Content\\Sys\\scripts",
+    "\\MyProject\\MyProject\\MyProject.Web\\Views",
+    "\\MyProject\\MyProject\\MyProject.Web\\Views\\Sys"
+  ],
+  "SelectedNode": "\\MyProject\\MyProject\\MyProject.Web\\Content\\Sys\\scripts\\UserManage.js",
+  "PreviewInSolutionExplorer": false
+}

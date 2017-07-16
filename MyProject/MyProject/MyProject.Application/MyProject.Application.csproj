@@ -119,10 +119,11 @@
     <Compile Include="MyProjectAppServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryExtensions.cs" />
+    <Compile Include="Sys\Dto\SysMenuModule.cs" />
+    <Compile Include="Sys\SysMenuModuleAppService.cs" />
     <Compile Include="TestAppService.cs" />
-    <Compile Include="Users\Dto\Sys_UserQuery.cs" />
-    <Compile Include="Users\ISysUserAppService.cs" />
-    <Compile Include="Users\SysUserAppService.cs" />
+    <Compile Include="Sys\Dto\SysUserQuery.cs" />
+    <Compile Include="Sys\SysUserAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

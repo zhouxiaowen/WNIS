@@ -12,6 +12,8 @@ namespace MyProject.EntityFramework
         //Example:
         //public virtual IDbSet<User> Users { get; set; }
 		
+		public virtual IDbSet<Sys_MenuModule> Sys_MenuModules { get; set; } 
+		
 		public virtual IDbSet<Sys_LSH> Sys_LSHs { get; set; } 
 		
 		public virtual IDbSet<Sys_User> Sys_Users { get; set; } 
