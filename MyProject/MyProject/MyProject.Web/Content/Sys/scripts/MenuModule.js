@@ -57,7 +57,7 @@ function BindGrid() {
                     input.Key = $("#TxtKey").val();
 
                     abp.ui.setBusy("#main",
-                        abp.services.app.sysMenuModule.querySysMenuModule(input)
+                        abp.services.app.SysMenuModule.QuerySysMenuModule(input)
                             .done(function (data) {
                                 if (data.Success) {
                                     if (data.TargetUrl != null) {
@@ -202,7 +202,7 @@ function SubmitClick() {
         input.Status = $("#SelStatus").val();
 
         abp.ui.setBusy("#main",
-            abp.services.app.sysMenuModule.addOrUpdateSysMenuModule(input)
+            abp.services.app.SysMenuModule.AddOrUpdateSysMenuModule(input)
                 .done(function (data) {
                     if (data.Success) {
                         if (data.Result.Message == null || data.Result.Message == "") {
@@ -234,7 +234,7 @@ function DelClick(code, message) {
         var input = new Object();
         input.Code = code;
         abp.ui.setBusy("#main",
-            abp.services.app.sysMenuModule.deleteSysMenuModule(input)
+            abp.services.app.SysMenuModule.DeleteSysMenuModule(input)
                 .done(function (data) {
                     BindGrid();
                     layer.msg('删除成功');

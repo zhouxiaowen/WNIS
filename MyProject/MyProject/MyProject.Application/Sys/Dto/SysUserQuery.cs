@@ -79,7 +79,7 @@ namespace MyProject.Sys.Dto
 
         public void Normalize()
         {
-            base.Sorting = "ID Desc";
+            base.Sorting = "Id Desc";
         }
     }
 

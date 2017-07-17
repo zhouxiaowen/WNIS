@@ -11,7 +11,7 @@
 <# 
 	string controllerName = "Sys";
 	string actionName = "MenuModule";
-	string apiName = "sysMenuModule";
+	string apiName = "SysMenuModule";
 	string tableName = "Sys_MenuModule";
 	string className = "SysMenuModule";
 	string chinaName = "菜单模块";
@@ -177,7 +177,7 @@ function BindGrid() {
                 input.Key = $("#TxtKey").val();
 
                 abp.ui.setBusy("#main",
-                    abp.services.app.<#=apiName#>.query<#=className#>(input)
+                    abp.services.app.<#=apiName#>.Query<#=className#>(input)
                         .done(function (data) {
                             if (data.Success) {
                                 if (data.TargetUrl != null) {
@@ -340,7 +340,7 @@ function SubmitClick() {
 	} //#>
 
         abp.ui.setBusy("#main",
-            abp.services.app.<#=apiName#>.addOrUpdate<#=className#>(input)
+            abp.services.app.<#=apiName#>.AddOrUpdate<#=className#>(input)
                 .done(function (data) {
                     if (data.Success) {
                         if (data.Result.Message == null || data.Result.Message == "") {
@@ -372,7 +372,7 @@ function DelClick(id, message) {
         var input = new Object();
         input.UId = id;
         abp.ui.setBusy("#main",
-            abp.services.app.<#=apiName#>.delete<#=className#>(input)
+            abp.services.app.<#=apiName#>.Delete<#=className#>(input)
                 .done(function (data) {
                     BindGrid();
                     layer.msg('删除成功');

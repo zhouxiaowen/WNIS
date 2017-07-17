@@ -57,7 +57,7 @@ function BindGrid() {
                 input.Key = $("#TxtKey").val();
 
                 abp.ui.setBusy("#main",
-                    abp.services.app.sysUser.querySysUser(input)
+                    abp.services.app.SysUser.QuerySysUser(input)
                         .done(function (data) {
                             if (data.Success) {
                                 if (data.TargetUrl != null) {
@@ -220,7 +220,7 @@ function SubmitClick() {
         input.Status = $("#SelStatus").val();
 
         abp.ui.setBusy("#main",
-            abp.services.app.sysUser.addOrUpdateSysUser(input)
+            abp.services.app.SysUser.AddOrUpdateSysUser(input)
                 .done(function (data) {
                     if (data.Success) {
                         if (data.Result.Message == null || data.Result.Message == "") {
@@ -252,7 +252,7 @@ function DelClick(id, message) {
         var input = new Object();
         input.UId = id;
         abp.ui.setBusy("#main",
-            abp.services.app.sysUser.deleteSysUser(input)
+            abp.services.app.SysUser.DeleteSysUser(input)
                 .done(function (data) {
                     BindGrid();
                     layer.msg('删除成功');

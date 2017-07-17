@@ -7373,3 +7373,364 @@ DEBUG 2017-07-17 09:10:25,228 [153  ] Abp.Logging.LogHelper                    -
 DEBUG 2017-07-17 09:10:25,229 [153  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysMenuModuleAppService' with service name 'app/sysMenuModule'.
 DEBUG 2017-07-17 09:10:25,230 [153  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysUserAppService' with service name 'app/sysUser'.
 DEBUG 2017-07-17 09:10:25,231 [153  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Common.ICommonAppService' with service name 'app/common'.
+DEBUG 2017-07-17 09:19:45,959 [187  ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-07-17 09:19:45,959 [187  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 09:19:45,960 [187  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 09:19:45,960 [187  ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-07-17 14:54:29,384 [278  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-07-17 14:54:30,076 [278  ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-07-17 14:54:30,084 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.Web.MyProjectWebModule, MyProject.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,084 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,086 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,086 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,086 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,087 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectDataModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,087 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,087 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,088 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectCoreModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,088 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectApplicationModule, MyProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,088 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,088 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectWebApiModule, MyProject.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,088 [278  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:30,092 [278  ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-07-17 14:54:31,711 [278  ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: MyProject.EntityFramework.MyProjectDbContext, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 14:54:31,929 [278  ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-07-17 14:54:31,940 [278  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-07-17 14:54:31,944 [278  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-07-17 14:54:31,973 [278  ] Abp.Localization.LocalizationManager     - Initialized localization source: MyProject
+DEBUG 2017-07-17 14:54:32,198 [278  ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 14:54:32,263 [278  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 4 classes define auto mapping attributes
+DEBUG 2017-07-17 14:54:32,263 [278  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleInput
+DEBUG 2017-07-17 14:54:32,269 [278  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleDetailOutput
+DEBUG 2017-07-17 14:54:32,270 [278  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserInput
+DEBUG 2017-07-17 14:54:32,270 [278  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserDetailOutput
+DEBUG 2017-07-17 14:54:32,469 [278  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.ITestAppService' with service name 'app/test'.
+DEBUG 2017-07-17 14:54:32,470 [278  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysMenuModuleAppService' with service name 'app/sysMenuModule'.
+DEBUG 2017-07-17 14:54:32,471 [278  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysUserAppService' with service name 'app/sysUser'.
+DEBUG 2017-07-17 14:54:32,472 [278  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Common.ICommonAppService' with service name 'app/common'.
+WARN  2017-07-17 14:54:33,698 [320  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-07-17 14:54:33,711 [320  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-07-17 16:02:14,765 [320  ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-07-17 16:02:14,775 [320  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 16:02:14,776 [320  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 16:02:14,776 [320  ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-07-17 16:03:07,055 [323  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-07-17 16:03:07,077 [323  ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-07-17 16:03:07,086 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.Web.MyProjectWebModule, MyProject.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,088 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,088 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,089 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,089 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,089 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectDataModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,090 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,090 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,090 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectCoreModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,090 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectApplicationModule, MyProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,090 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,091 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectWebApiModule, MyProject.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,091 [323  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:07,094 [323  ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-07-17 16:03:07,543 [323  ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: MyProject.EntityFramework.MyProjectDbContext, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:03:08,614 [323  ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-07-17 16:03:08,743 [323  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-07-17 16:03:08,745 [323  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-07-17 16:03:08,747 [323  ] Abp.Localization.LocalizationManager     - Initialized localization source: MyProject
+DEBUG 2017-07-17 16:03:09,019 [323  ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 16:03:09,074 [323  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 4 classes define auto mapping attributes
+DEBUG 2017-07-17 16:03:09,074 [323  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleInput
+DEBUG 2017-07-17 16:03:09,079 [323  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleDetailOutput
+DEBUG 2017-07-17 16:03:09,080 [323  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserInput
+DEBUG 2017-07-17 16:03:09,080 [323  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserDetailOutput
+DEBUG 2017-07-17 16:03:09,271 [323  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.ITestAppService' with service name 'app/test'.
+DEBUG 2017-07-17 16:03:09,272 [323  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysMenuModuleAppService' with service name 'app/sysMenuModule'.
+DEBUG 2017-07-17 16:03:09,272 [323  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysUserAppService' with service name 'app/sysUser'.
+DEBUG 2017-07-17 16:03:09,273 [323  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Common.ICommonAppService' with service name 'app/common'.
+WARN  2017-07-17 16:03:15,595 [318  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-07-17 16:03:15,650 [318  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-07-17 16:14:42,238 [317  ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-07-17 16:14:42,240 [317  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 16:14:42,240 [317  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 16:14:42,240 [317  ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-07-17 16:15:36,323 [293  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-07-17 16:15:36,338 [293  ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-07-17 16:15:36,344 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.Web.MyProjectWebModule, MyProject.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,346 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,346 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,346 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,346 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,346 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectDataModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,347 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,348 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,348 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectCoreModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,348 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectApplicationModule, MyProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,348 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,348 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectWebApiModule, MyProject.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,348 [293  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:36,351 [293  ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-07-17 16:15:36,618 [293  ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: MyProject.EntityFramework.MyProjectDbContext, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 16:15:37,424 [293  ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-07-17 16:15:37,433 [293  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-07-17 16:15:37,437 [293  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-07-17 16:15:37,439 [293  ] Abp.Localization.LocalizationManager     - Initialized localization source: MyProject
+DEBUG 2017-07-17 16:15:37,584 [293  ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 16:15:37,628 [293  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 4 classes define auto mapping attributes
+DEBUG 2017-07-17 16:15:37,628 [293  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleInput
+DEBUG 2017-07-17 16:15:37,631 [293  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleDetailOutput
+DEBUG 2017-07-17 16:15:37,631 [293  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserInput
+DEBUG 2017-07-17 16:15:37,631 [293  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserDetailOutput
+DEBUG 2017-07-17 16:15:37,835 [293  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.ITestAppService' with service name 'app/Test'.
+DEBUG 2017-07-17 16:15:37,836 [293  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysMenuModuleAppService' with service name 'app/SysMenuModule'.
+DEBUG 2017-07-17 16:15:37,837 [293  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysUserAppService' with service name 'app/SysUser'.
+DEBUG 2017-07-17 16:15:37,838 [293  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Common.ICommonAppService' with service name 'app/Common'.
+WARN  2017-07-17 16:15:44,188 [318  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-07-17 16:15:44,249 [318  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-07-17 17:31:01,113 [321  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+ERROR 2017-07-17 17:31:39,245 [317  ] nHandling.AbpApiExceptionFilterAttribute - 未将对象引用设置到对象的实例。
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 MyProject.QueryExtensions.OrderSort[T](IQueryable`1 Sour, String SortExpression, String Direction) 位置 E:\git\WNIS\MyProject\MyProject\MyProject.Application\QueryExtensions.cs:行号 61
+   在 MyProject.QueryExtensions.OrderBy[T](IQueryable`1 query, String propertyName) 位置 E:\git\WNIS\MyProject\MyProject\MyProject.Application\QueryExtensions.cs:行号 47
+   在 MyProject.QueryExtensions.SortAndPaging[TEntity](IQueryable`1 q, PagedAndSortedResultRequestDto input) 位置 E:\git\WNIS\MyProject\MyProject\MyProject.Application\QueryExtensions.cs:行号 28
+   在 MyProject.Sys.SysUserAppService.QuerySysUser(SysUserQueryInput input) 位置 E:\git\WNIS\MyProject\MyProject\MyProject.Application\Sys\SysUserAppService.cs:行号 87
+   在 Castle.Proxies.SysUserAppServiceProxy.QuerySysUser_callback(SysUserQueryInput input)
+   在 Castle.Proxies.Invocations.ISysUserAppService_QuerySysUser.InvokeMethodOnTarget()
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options)
+   在 Abp.Domain.Uow.UnitOfWorkInterceptor.PerformUow(IInvocation invocation, UnitOfWorkOptions options)
+   在 Abp.Domain.Uow.UnitOfWorkInterceptor.Intercept(IInvocation invocation)
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Abp.Auditing.AuditingInterceptor.Intercept(IInvocation invocation)
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Abp.Runtime.Validation.Interception.ValidationInterceptor.Intercept(IInvocation invocation)
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.SysUserAppServiceProxy.QuerySysUser(SysUserQueryInput input)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 Abp.Extensions.ExceptionExtensions.ReThrow(Exception exception)
+   在 Abp.WebApi.Controllers.Dynamic.Interceptors.AbpDynamicApiControllerInterceptor`1.Intercept(IInvocation invocation)
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.DynamicApiController`1Proxy_1.QuerySysUser(SysUserQueryInput input)
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Uow.AbpApiUowFilter.<ExecuteActionFilterAsync>d__6.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Validation.AbpApiValidationFilter.<ExecuteActionFilterAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Auditing.AbpApiAuditFilter.<ExecuteActionFilterAsync>d__4.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Security.AntiForgery.AbpAntiForgeryApiFilter.<ExecuteAuthorizationFilterAsync>d__10.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Authorization.AbpApiAuthorizeFilter.<ExecuteAuthorizationFilterAsync>d__7.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+WARN  2017-07-17 22:02:46,702 [316  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+ERROR 2017-07-17 22:02:47,362 [317  ] nHandling.AbpApiExceptionFilterAttribute - 未将对象引用设置到对象的实例。
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 MyProject.QueryExtensions.OrderSort[T](IQueryable`1 Sour, String SortExpression, String Direction) 位置 E:\git\WNIS\MyProject\MyProject\MyProject.Application\QueryExtensions.cs:行号 61
+   在 MyProject.QueryExtensions.OrderBy[T](IQueryable`1 query, String propertyName) 位置 E:\git\WNIS\MyProject\MyProject\MyProject.Application\QueryExtensions.cs:行号 47
+   在 MyProject.QueryExtensions.SortAndPaging[TEntity](IQueryable`1 q, PagedAndSortedResultRequestDto input) 位置 E:\git\WNIS\MyProject\MyProject\MyProject.Application\QueryExtensions.cs:行号 28
+   在 MyProject.Sys.SysUserAppService.QuerySysUser(SysUserQueryInput input) 位置 E:\git\WNIS\MyProject\MyProject\MyProject.Application\Sys\SysUserAppService.cs:行号 87
+   在 Castle.Proxies.SysUserAppServiceProxy.QuerySysUser_callback(SysUserQueryInput input)
+   在 Castle.Proxies.Invocations.ISysUserAppService_QuerySysUser.InvokeMethodOnTarget()
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options)
+   在 Abp.Domain.Uow.UnitOfWorkInterceptor.PerformUow(IInvocation invocation, UnitOfWorkOptions options)
+   在 Abp.Domain.Uow.UnitOfWorkInterceptor.Intercept(IInvocation invocation)
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Abp.Auditing.AuditingInterceptor.Intercept(IInvocation invocation)
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Abp.Runtime.Validation.Interception.ValidationInterceptor.Intercept(IInvocation invocation)
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.SysUserAppServiceProxy.QuerySysUser(SysUserQueryInput input)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 Abp.Extensions.ExceptionExtensions.ReThrow(Exception exception)
+   在 Abp.WebApi.Controllers.Dynamic.Interceptors.AbpDynamicApiControllerInterceptor`1.Intercept(IInvocation invocation)
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.DynamicApiController`1Proxy_1.QuerySysUser(SysUserQueryInput input)
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Uow.AbpApiUowFilter.<ExecuteActionFilterAsync>d__6.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Validation.AbpApiValidationFilter.<ExecuteActionFilterAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Auditing.AbpApiAuditFilter.<ExecuteActionFilterAsync>d__4.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Security.AntiForgery.AbpAntiForgeryApiFilter.<ExecuteAuthorizationFilterAsync>d__10.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Abp.WebApi.Authorization.AbpApiAuthorizeFilter.<ExecuteAuthorizationFilterAsync>d__7.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+DEBUG 2017-07-17 22:04:20,928 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-07-17 22:04:21,700 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-07-17 22:04:21,709 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.Web.MyProjectWebModule, MyProject.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,710 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,710 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectDataModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectCoreModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectApplicationModule, MyProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectWebApiModule, MyProject.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:21,714 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-07-17 22:04:23,393 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: MyProject.EntityFramework.MyProjectDbContext, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:04:23,681 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-07-17 22:04:23,692 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-07-17 22:04:23,693 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-07-17 22:04:23,720 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: MyProject
+DEBUG 2017-07-17 22:04:24,054 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 22:04:24,172 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 4 classes define auto mapping attributes
+DEBUG 2017-07-17 22:04:24,172 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleInput
+DEBUG 2017-07-17 22:04:24,177 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleDetailOutput
+DEBUG 2017-07-17 22:04:24,177 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserInput
+DEBUG 2017-07-17 22:04:24,177 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserDetailOutput
+DEBUG 2017-07-17 22:04:24,352 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.ITestAppService' with service name 'app/Test'.
+DEBUG 2017-07-17 22:04:24,353 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysMenuModuleAppService' with service name 'app/SysMenuModule'.
+DEBUG 2017-07-17 22:04:24,354 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysUserAppService' with service name 'app/SysUser'.
+DEBUG 2017-07-17 22:04:24,355 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Common.ICommonAppService' with service name 'app/Common'.
+ERROR 2017-07-17 22:04:24,897 [5    ] MyProject.Web.Controllers.HomeController - The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Home/Index.aspx
+~/Views/Home/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Home/Index.cshtml
+~/Views/Home/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Home/Index.aspx
+~/Views/Home/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Home/Index.cshtml
+~/Views/Home/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+WARN  2017-07-17 22:04:25,952 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-07-17 22:04:25,969 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-07-17 22:07:38,285 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-07-17 22:07:38,323 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-07-17 22:07:38,333 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.Web.MyProjectWebModule, MyProject.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,336 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,336 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,337 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,337 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,337 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectDataModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,338 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,338 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,338 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectCoreModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,338 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectApplicationModule, MyProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,338 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,339 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectWebApiModule, MyProject.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,339 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:38,343 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-07-17 22:07:38,868 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: MyProject.EntityFramework.MyProjectDbContext, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 22:07:39,829 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-07-17 22:07:39,840 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-07-17 22:07:39,842 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-07-17 22:07:39,846 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: MyProject
+DEBUG 2017-07-17 22:07:40,067 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 22:07:40,164 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 4 classes define auto mapping attributes
+DEBUG 2017-07-17 22:07:40,164 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleInput
+DEBUG 2017-07-17 22:07:40,167 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleDetailOutput
+DEBUG 2017-07-17 22:07:40,168 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserInput
+DEBUG 2017-07-17 22:07:40,168 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserDetailOutput
+DEBUG 2017-07-17 22:07:40,431 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.ITestAppService' with service name 'app/Test'.
+DEBUG 2017-07-17 22:07:40,434 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysMenuModuleAppService' with service name 'app/SysMenuModule'.
+DEBUG 2017-07-17 22:07:40,436 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysUserAppService' with service name 'app/SysUser'.
+DEBUG 2017-07-17 22:07:40,438 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Common.ICommonAppService' with service name 'app/Common'.
+ERROR 2017-07-17 22:07:40,841 [7    ] MyProject.Web.Controllers.HomeController - The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Home/Index.aspx
+~/Views/Home/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Home/Index.cshtml
+~/Views/Home/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Home/Index.aspx
+~/Views/Home/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Home/Index.cshtml
+~/Views/Home/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+WARN  2017-07-17 22:07:45,380 [9    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2017-07-17 22:07:45,397 [9    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
