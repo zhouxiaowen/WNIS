@@ -7338,3 +7338,38 @@ System.InvalidOperationException: The view 'Index' or its master was not found o
    дк System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
 WARN  2017-07-17 00:19:06,507 [182  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
 WARN  2017-07-17 00:19:06,545 [182  ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+DEBUG 2017-07-17 00:21:28,003 [81   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-07-17 00:21:28,004 [81   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 00:21:28,005 [81   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 00:21:28,005 [81   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-07-17 09:10:23,137 [153  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-07-17 09:10:23,555 [153  ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2017-07-17 09:10:23,561 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.Web.MyProjectWebModule, MyProject.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,563 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,563 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,563 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,563 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,564 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectDataModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,564 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,564 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,565 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectCoreModule, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,566 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectApplicationModule, MyProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,566 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,566 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: MyProject.MyProjectWebApiModule, MyProject.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,566 [153  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:23,570 [153  ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2017-07-17 09:10:24,627 [153  ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: MyProject.EntityFramework.MyProjectDbContext, MyProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-07-17 09:10:24,838 [153  ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-07-17 09:10:24,852 [153  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-07-17 09:10:24,853 [153  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-07-17 09:10:24,855 [153  ] Abp.Localization.LocalizationManager     - Initialized localization source: MyProject
+DEBUG 2017-07-17 09:10:25,038 [153  ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-07-17 09:10:25,086 [153  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 4 classes define auto mapping attributes
+DEBUG 2017-07-17 09:10:25,086 [153  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleInput
+DEBUG 2017-07-17 09:10:25,091 [153  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysMenuModuleDetailOutput
+DEBUG 2017-07-17 09:10:25,091 [153  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserInput
+DEBUG 2017-07-17 09:10:25,091 [153  ] Abp.AutoMapper.AbpAutoMapperModule       - MyProject.Sys.Dto.SysUserDetailOutput
+DEBUG 2017-07-17 09:10:25,228 [153  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.ITestAppService' with service name 'app/test'.
+DEBUG 2017-07-17 09:10:25,229 [153  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysMenuModuleAppService' with service name 'app/sysMenuModule'.
+DEBUG 2017-07-17 09:10:25,230 [153  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Sys.ISysUserAppService' with service name 'app/sysUser'.
+DEBUG 2017-07-17 09:10:25,231 [153  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'MyProject.Common.ICommonAppService' with service name 'app/common'.

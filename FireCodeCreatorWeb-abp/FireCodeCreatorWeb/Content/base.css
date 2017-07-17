@@ -1,0 +1,25 @@
+﻿.btn {
+    line-height:1;
+    border-radius:0px;
+}
+
+.height-30 {
+    height:30px;
+}
+
+.height-35 {
+    height:35px;
+}
+
+.height-40 {
+    height:40px;
+}
+
+/*表格样式修正*/
+.dataTables_paginate {
+    text-align:right;
+    padding:5px 0px;
+}
+.dataTables_info {
+    padding:5px 0px;
+}

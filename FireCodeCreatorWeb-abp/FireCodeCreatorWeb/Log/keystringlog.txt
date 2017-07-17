@@ -1,0 +1,1 @@
+[{"Key":null,"Strings":null},{"Key":"Code","Strings":"编码"},{"Key":"Id","Strings":"Id"},{"Key":"LinkUrl","Strings":"链接地址"},{"Key":"Name","Strings":"名称"},{"Key":"Status","Strings":"状态"}]

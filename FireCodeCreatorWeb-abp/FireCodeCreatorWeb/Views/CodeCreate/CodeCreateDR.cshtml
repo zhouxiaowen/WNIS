@@ -1,0 +1,1492 @@
+﻿
+@{
+    ViewBag.Title = "Module";
+
+}
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            @*全屏使用*@
+            <div class="widget-header bordered-bottom bordered-sky">
+                <span class="widget-caption"><i class="fa fa-cogs"></i>&nbsp;代码生成器</span>
+                <div class="widget-buttons">
+                    <a href="#" id="fullscreen-toggler" class="fullscreen">
+                        <i class="glyphicon glyphicon-fullscreen"></i>
+                    </a>
+                    <a href="#" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="sidebar-toggler" href="#">
+                        <i class="fa fa-arrows-h"></i>
+                    </a>
+                    @*<a href="#" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a href="#" data-toggle="dispose">
+                            <i class="fa fa-times"></i>
+                        </a>*@
+                </div>
+            </div>
+            <div class="widget-body no-padding">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:10px 8px; ">
+                                    <a id="btn_databaselink" class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-refresh"></i>&nbsp;连接数据库</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0px 0px 5px 5px; ">
+
+                                    <span class="input-icon icon-right">
+                                        <input type="text" placeholder="关键字过滤" id="txt_Key" class="form-control">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row" style="border:1px solid #ccc; padding:5px; margin-left:-10px;">
+                                <ul id="treeDemo" class="ztree" style="margin-top:0; width:100%; height:auto;"></ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <a class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                            <div class="row" style="padding:0px 10px;">
+                                <table class="table table-bordered table-hover table-striped" id="table_Colunm">
+                                    <thead class="">
+                                        @*bordered-blueberry*@
+                                        <tr role="row" style="background-color:#F5F5F5">
+                                            <th rowspan="2" style="width:100px;vertical-align:middle" class="text-center">字段名</th>
+                                            <th rowspan="2" style="width:100px;vertical-align:middle" class="text-center">对应名称</th>
+                                            <th rowspan="2" style="width:100px;vertical-align:middle" class="text-center">类型</th>
+                                            <th rowspan="2" style="width:100px;vertical-align:middle" class="text-center">长度</th>
+                                            <th rowspan="2" style="width:100px;vertical-align:middle" class="text-center">允许空</th>
+                                            <th rowspan="2" style="width:100px;vertical-align:middle" class="text-center">主键</th>
+                                            <th colspan="2" style="width:100px;" class="text-center">查询相关Query</th>
+                                            <th colspan="4" style="width:260px;" class="text-center">增删改相关</th>
+                                        </tr>
+                                        <tr role="row">
+                                            <th style="width:50px;">input</th>
+                                            <th style="width:50px;">output</th>
+                                            <th style="width:50px;">input</th>
+                                            <th style="width:80px;">不为空</th>
+                                            <th style="width:50px;" title="输入的时候进行长度判断，如果为空则不判断">长度</th>
+                                            <th style="width:80px;" title="IsExist中进行唯一性判断，比如id+名称作为唯一性">唯一性</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <hr />
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-3">
+                                    表实体名：<input id="txt_ModelName" type="text" placeholder="表实体名" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    类名：<input id="txt_ClassName" type="text" placeholder="类名" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    类中文名：<input id="txt_ChinaName" type="text" placeholder="类中文名" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    类名：<input type="text" placeholder="类名" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <a class="btn btn-blue" href="javascript:void(0);" id="btn_Create"><i class="fa fa-pencil"></i>&nbsp;生成代码</a>
+                                </div>
+                            </div>
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <h3>实体相关</h3>
+                                </div>
+                            </div>
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <div class="tabbable">
+                                        <ul id="myTab" class="nav nav-tabs nav-justified">
+                                            <li class="active">
+                                                <a href="#ModelQueryInput" data-toggle="tab">
+                                                    查询列表实体(Query)
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#ModelDetialInput" data-toggle="tab">
+                                                    单个实体(Detial)
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#ModelInput" data-toggle="tab">
+                                                    录入(Input/Output)
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#ModelIsExistInput" data-toggle="tab">
+                                                    唯一实体(IsExist)
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#ModelDelInput" data-toggle="tab">
+                                                    删除实体(Del)
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="tab-content" style="height:330px;">
+                                            <div class="tab-pane active" id="ModelQueryInput">
+
+                                            </div>
+                                            <div class="tab-pane" id="ModelDetialInput">
+
+                                            </div>
+                                            <div class="tab-pane active" id="ModelInput">
+
+                                            </div>
+                                            <div class="tab-pane active" id="ModelIsExistInput">
+
+                                            </div>
+                                            <div class="tab-pane active" id="ModelDelInput">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <h3>接口相关</h3>
+                                </div>
+                            </div>
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <div class="tabbable">
+                                        <ul id="myTab" class="nav nav-tabs nav-justified">
+                                            <li class="active">
+                                                <a href="#PanelInterface" data-toggle="tab">
+                                                    接口定义(Interface)
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#PanelService" data-toggle="tab">
+                                                    接口定义(Service)
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="tab-content" style="height:330px;">
+
+                                            <div class="tab-pane" id="PanelInterface">
+
+                                            </div>
+                                            <div class="tab-pane" id="PanelService">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <h3>界面相关</h3>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <div class="tabbable">
+                                        <ul id="myTab" class="nav nav-tabs nav-justified">
+                                            <li class="active">
+                                                <a href="#ViewIndex" data-toggle="tab">
+                                                    主界面
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#ViewEdit" data-toggle="tab">
+                                                    编辑界面
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#ViewIndexJS" data-toggle="tab">
+                                                    界面JS
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="tab-content" style="height:330px;">
+
+                                            <div class="tab-pane" id="ViewIndex">
+
+                                            </div>
+                                            <div class="tab-pane" id="ViewEdit">
+
+                                            </div>
+                                            <div class="tab-pane" id="ViewIndexJS">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Email Modal Templates-->
+<div id="myModal" style="display:none;">
+    @{
+        Html.RenderPartial("../Shared/_dblinkLayout");
+    }
+</div>
+<!--End Email Templates-->
+
+
+<script src="~/Scripts/jquery.ztree.all-3.5.min.js"></script>
+<link href="~/Content/zTree.theme.metro.css" rel="stylesheet" />
+
+<script src="~/Scripts/assets/js/bootbox/bootbox.js"></script>
+
+<script>
+    //ZTree
+    var oTable;
+    var GridJsonData;
+
+    var setting = {
+        view: {
+            addHoverDom: addHoverDom,
+            removeHoverDom: removeHoverDom,
+            selectedMulti: false
+        },
+        check: {
+            enable: false
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        edit: {
+            enable: false
+        },
+        callback: {
+            onClick: zTreeOnClick
+        }
+    };
+    var gridsetting = [{ "data": "Name" },
+                           { "data": "DurName", "type": "text" },
+                           {
+                               "data": "Category",
+                               //"createdCell": function (type, datatype, data, row, col) { debugger; },
+                               "render": function (datatype, display, data)
+                               {
+                                   return data.Category;
+                               }
+                           },
+                           { "data": "Length" },
+                           { "data": "IsNull","type": "text" },
+                           {
+                               "data": "IsKey"
+                           },
+                           { "data": "IsQueryInput", "type": "checkbox" },
+                           { "data": "IsQueryOutput", "type": "checkbox" },
+                           { "data": "IsInput", "type": "checkbox" },
+                           { "data": "IsEmpty", "type": "checkbox" },
+                           { "data": "IsLength", "type": "text" },
+                           {"data":"IsExist","type":"checkbox"}
+    ];
+
+    function zTreeOnClick(event, treeId, treeNode)
+    {
+        var a = treeNode.name;
+        if (treeNode.pId != null)
+        {
+            //debugger;
+            if ($.fn.dataTable.isDataTable('#table_Colunm'))
+            {
+                $("#table_Colunm").DataTable().ajax.reload();
+            }
+            else
+            {
+                oTable = $('#table_Colunm').dataTable({
+                    "bPaginate": false, //翻页功能
+                    "bFilter": false, //过滤功能
+                    "bInfo": false,//页脚信息
+                    ajax: function (data, callback, settings)
+                    {
+                        GetGridData(callback, treeNode);
+                    },
+                    "fnDrawCallback": function (obj)            //加载完成后执行
+                    {
+                        RoadGrid(obj);
+                        //BindInput();
+                    },
+
+                    "columns": gridsetting
+                });
+            }
+
+        }
+    };
+    ///获取数据
+    function GetGridData(callback, treeNode)
+    {
+        var urlStr;
+        if (treeNode.pId == 1)
+        {
+            urlStr = "/api/DbLink?TableName=" + zTreeObj.getSelectedNodes()[0].name + "&DBName=" + $("#sel_DbList").val() + "&ServerName=" + $("#txt_ServerName").val() + "&UserName=" + $("#txt_UName").val() + "&Pwd=" + $("#txt_Pwd").val();
+        } else if (treeNode.pId == 2)
+        {
+            urlStr = "/api/DbLink?ViewName=" + zTreeObj.getSelectedNodes()[0].name + "&DBName=" + $("#sel_DbList").val() + "&ServerName=" + $("#txt_ServerName").val() + "&UserName=" + $("#txt_UName").val() + "&Pwd=" + $("#txt_Pwd").val();
+        }
+
+        $.ajax({
+            url: urlStr,
+            type: "get",
+            dataType: 'json',
+            success: function (json)
+            {
+                GridJsonData = json;
+                var response = {};
+                response.data = json.tableColunmList;
+                callback(response);
+
+                BindInput();
+            },
+            error: function (json)
+            {
+                //$("#span_LinkStatus").html("<font color='red'>链接数据库失败<br/>失败原因：" + json.responseJSON.ExceptionMessage + "</font>");
+                layer.msg("链接数据库失败！");
+            }
+        });
+    }
+
+    //表格加载后执行
+    function RoadGrid(obj)
+    {
+        for (var i = 0; i < obj.aoColumns.length; i++)
+        {
+            if (obj.aoColumns[i].sType == "text")           //text处理
+            {
+                $("#table_Colunm tbody tr").each(function (index)
+                {
+                    $(this).find("td:eq(" + i + ")").click(function ()
+                    {
+                        $(this).html("<input onblur='TxtAfterChange(this," + index + "," + $(this).parents("tr").find("td").index($(this)) + ")'  type='text' style='border:0px;' value='" + $(this).html() + "' />");
+                        $(this).find("input").focus();
+                        $(this).unbind("click");
+                    });
+                })
+            }
+
+            if (obj.aoColumns[i].sType == "checkbox")
+            {
+                $("#table_Colunm tbody tr").each(function (index)
+                {
+                    var result = 0;
+                    result = $(this).find("td:eq(" + i + ")").html();
+
+
+                    if (result == true || result == "true" || result == '1')     //判断是否选中
+                    {
+
+                        $(this).find("td:eq(" + i + ")").html("<input type='checkbox' checked='checked' />");
+                    } else
+                    {
+                        $(this).find("td:eq(" + i + ")").html("<input type='checkbox' />");
+                    }
+
+                })
+            }
+        }
+    }
+
+    //绑定界面控件的值（Input）
+    function BindInput()
+    {
+        $("#txt_ModelName").val(GridJsonData.ModelName);
+        $("#txt_ClassName").val(GridJsonData.ClassName);
+        $("#txt_ChinaName").val(GridJsonData.ChinaName);
+    }
+
+    function TxtAfterChange(obj,row,col)
+    {
+        $("#table_Colunm tbody tr:eq(" + row + ") td:eq(" + col + ")").html($(obj).val());
+        $("#table_Colunm tbody tr:eq(" + row + ") td:eq(" + col + ")").attr("class", "danger");
+        $("#table_Colunm tbody tr:eq(" + row + ") td:eq(" + col + ")").click(function ()
+        {
+            var str = $(this).html();
+            $(this).html("<input onblur='TxtAfterChange(this," + row + "," + col + ")'  style='border:0px;'  type='text' value='" + str + "' />");
+            $(this).find("input").focus();
+            $(this).find("input")[0].scrollLeft = 700;
+            $(this).unbind("click");
+        });
+
+    }
+
+    var zNodes = [
+     { id: 1, pId: 0, name: "表", open: true },
+
+     { id: 3, pId: 0, name: "视图", open: true }
+    ];
+
+
+    function addHoverDom(treeId, treeNode)
+    {
+        var sObj = $("#" + treeNode.tId + "_span");
+        if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+        var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+         + "' title='add node' onfocus='this.blur();'></span>";
+        sObj.after(addStr);
+        var btn = $("#addBtn_" + treeNode.tId);
+        if (btn) btn.bind("click", function ()
+        {
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            zTree.addNodes(treeNode, { id: (100 + newCount), pId: treeNode.id, name: "new node" + (newCount++) });
+            return false;
+        });
+    };
+    function removeHoverDom(treeId, treeNode)
+    {
+        $("#addBtn_" + treeNode.tId).unbind().remove();
+    };
+
+    var zTreeObj;
+    $(function ()
+    {
+        zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
+        //$('#searchable').dataTable({
+        //    //"sDom": "Tflt<'row DTTTFooter'<'col-sm-6'i><'col-sm-6'p>>",
+        //    "iDisplayLength": 10,
+        //    "aLengthMenu": [[5, 10, 12, -1, 0], ['5', '10', '12', "所有", "0"] // change per page values here
+        //    ],
+
+        //    "bPaginate": false, //翻页功能
+        //    "bLengthChange": false, //改变每页显示数据数量
+        //    "bFilter": false, //过滤功能
+        //    "bSort": false, //排序功能
+        //    "bInfo": true,//页脚信息
+        //    "bAutoWidth": true,//自动宽度
+        //    "language": {
+        //        //"search": "",
+        //        "sInfo": "从第 _START_ 条到第 _END_ 条，总 _TOTAL_ 条",
+        //        //"sLengthMenu": "_MENU_",
+        //        "oPaginate": {
+        //            "sPrevious": "前一页",
+        //            "sNext": "下一页"
+        //        }
+        //    },
+        //    "aoColumns": [
+        //      { "bSortable": false },
+        //      null,
+        //      { "bSortable": false },
+        //      null,
+        //      { "bSortable": false }
+        //    ],
+        //    "aaSorting": []
+        //});
+
+        $("#btn_databaselink").on('click', function ()
+        {
+            layer.open({
+                type: 1,
+                closeBtn: 0,
+                area: '606px',
+                shadeClose: true,
+                title:"链接数据库",
+                content: $('#myModal')
+            });
+
+
+        });
+
+        $("#btn_Submit").on('click', function ()
+        {
+            $.ajax({
+                url: "/api/DbLink?DBName=" + $("#sel_DbList").val() + "&ServerName=" + $("#txt_ServerName").val() + "&UserName=" + $("#txt_UName").val() + "&Pwd=" + $("#txt_Pwd").val(),
+                type: "get",
+                dataType: 'json',
+                success: function (json)
+                {
+                    //$("#span_LinkStatus").html("<font color='green'>链接数据库成功</font>")
+                    layer.msg("链接数据库成功！");
+                    layer.closeAll();
+                    //debugger;
+                    zNodes = json;
+                    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+                },
+                error: function (json)
+                {
+                    //$("#span_LinkStatus").html("<font color='red'>链接数据库失败<br/>失败原因：" + json.responseJSON.ExceptionMessage + "</font>");
+                    layer.msg("链接数据库失败！");
+                }
+            });
+        });
+
+        $('#txt_Key').bind('keydown', function (event)
+        {
+            if(event.keyCode == "13")
+            {
+                var arr = new Array();
+                var key = $('#txt_Key').val();
+                for (var i = 0; i < zNodes.length; i++)
+                {
+                    if (zNodes[i].name.indexOf(key) > -1 || zNodes[i].name == "表" || zNodes[i].name == "视图")
+                    {
+                        zNodes[i].open = true;
+                        arr.push(zNodes[i]);
+                    }
+                }
+
+                $.fn.zTree.init($("#treeDemo"), setting, arr);
+            }
+        });
+
+        $("#btn_Create").click(function ()
+        {
+            var colsetting = gridsetting;
+            var colResultArr = new Array();
+            var colName = $('#table_Colunm').dataTable();
+            $("#table_Colunm tbody tr").each(function (trindex)
+            {
+                var obj = new Object();
+                $(this).find("td").each(function (tdindex)
+                {
+                    if (colsetting[tdindex].type == "checkbox")
+                    {
+                        $(this).find("input:first").prop("checked") ? eval("obj." + colsetting[tdindex].data + " = true") : eval("obj." + colsetting[tdindex].data + " = false");
+                    } else
+                    {
+                        eval("obj." + colsetting[tdindex].data + " = $(this).html();");
+                    }
+
+                });
+                colResultArr.push(obj);
+            });
+            CreateCode(colResultArr);
+
+            SaveLog(zTreeObj.getSelectedNodes()[0].name, colResultArr);
+        });
+
+    })
+
+    function CreateCode(colResultArr)
+    {
+        CreateModelQueryInput(colResultArr);
+        //CreateModelQueryOutput(colResultArr);
+        CreateModelDetailInput(colResultArr);
+        CreateModelInput(colResultArr);
+        //CreateModelOutput(colResultArr);
+        CreateModelIsExistInput(colResultArr);
+        CreateModelDelInput(colResultArr);
+
+        CreateInterface(colResultArr);
+        CreateService(colResultArr);
+
+
+        CreateViewIndex(colResultArr);
+        CreateViewEdit(colResultArr);
+        CreateViewIndexJS(colResultArr);
+    }
+
+    //生成代码1：  txt_ModelName txt_ClassName
+    function CreateModelQueryInput(arr)
+    {
+        $("#ModelQueryInput").html("<textarea id='txt_ModelQueryInput'></textarea>");
+        var str = "";
+        str = str + "HisPlatform.Application/" + $("#txt_ClassName").val() + "/Dto/" + $("#txt_ClassName").val() + "Query.cs \n\n";
+        ///input
+        str = str + "public class " + $("#txt_ClassName").val() + "QueryInput: PagedAndSortedResultRequestDto, IShouldNormalize" + "\n";
+        str = str + "{" + "\n";
+
+        for (var i = 0; i < arr.length; i++)
+        {
+            if (arr[i].IsQueryInput == true)
+            {
+                str = str + "\t /// <summary> " + "\n";
+                str = str + "\t /// " + arr[i].DurName + "\n";
+                str = str + "\t /// </summary> " + "\n";
+                str = str + "\t public " + GetColCategory(arr[i]) + " " + arr[i].Name + " {set;get;}\n";
+                str = str + "" + "\n";
+            }
+
+        }
+        str = str + "\t" + "public void Normalize()" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "//base.Sorting = \"PX,DLMC\";" + "\n";
+        str = str + "\t" + "}" + "\n";
+
+        str = str + "}" + "\n\n\n";
+
+        //output
+        str = str + "public class " + $("#txt_ClassName").val() + "QueryItem" + "\n";
+        str = str + "{" + "\n";
+
+        for (var i = 0; i < arr.length; i++)
+        {
+            if (arr[i].IsKey == "yes")
+            {
+                str = str + "\t /// <summary> " + "\n";
+                str = str + "\t /// " + arr[i].DurName + " \n";
+                str = str + "\t /// </summary> " + "\n";
+                str = str + "\t public Guid ID {set;get;}\n";
+                str = str + "" + "\n";
+            }
+            else
+            {
+                if (arr[i].IsQueryOutput == true)
+                {
+                    str = str + "\t /// <summary> " + "\n";
+                    str = str + "\t /// " + arr[i].DurName + "\n";
+                    str = str + "\t /// </summary> " + "\n";
+                    str = str + "\t public " + GetColCategory(arr[i]) + " " + arr[i].Name + " {set;get;}\n";
+                    str = str + "" + "\n";
+                }
+            }
+
+
+        }
+
+        str = str + "}" + "\n";
+
+        str = str + "public class " + $("#txt_ClassName").val() + "QueryOutput : PagedResultDto<" + $("#txt_ClassName").val() + "QueryItem>" + "\n";
+        str = str + "{ }" + "\n";
+
+        $("#txt_ModelQueryInput").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ModelQueryInput"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    function CreateModelDetailInput(arr)
+    {
+        $("#ModelDetialInput").html("<textarea id='txt_ModelDetialInput'></textarea>");
+        var str = "";
+        str = str + "HisPlatform.Application/" + $("#txt_ClassName").val() + "/Dto/" + $("#txt_ClassName").val() + "Detail.cs \n\n";
+        str = str + "public class " + $("#txt_ClassName").val() + "DetailInput" + "\n";
+        str = str + "" + "{" + "\n";
+        str = str + "\t" + "public Guid ID { get; set; }" + "\n";
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+        str = str + "" + "[AutoMapFrom(typeof(" + $("#txt_ModelName").val() + "))]" + "\n";
+        str = str + "" + "public class " + $("#txt_ClassName").val() + "DetailOutput : " + $("#txt_ClassName").val() + "Input" + "\n";
+        str = str + "" + "{" + "\n";
+        str = str + "" + "" + "\n";
+        str = str + "" + "}" + "\n";
+
+        $("#txt_ModelDetialInput").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ModelDetialInput"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    function CreateModelInput(arr)
+    {
+        $("#ModelInput").html("<textarea id='txt_ModelInput'></textarea>");
+        var str = "";
+        str = str + "HisPlatform.Application/" + $("#txt_ClassName").val() + "/Dto/" + $("#txt_ClassName").val() + ".cs \n\n";
+        //input
+        str = str + "[AutoMapTo(typeof(" + $("#txt_ModelName").val() + "))]\n";
+        str = str + "public class " + $("#txt_ClassName").val() + "Input" + "\n";
+        str = str + "{" + "\n";
+
+        str = str + "\t" + " public Guid ID { get; set; }" + "\n";
+        for (var i = 0; i < arr.length; i++)
+        {
+            if (arr[i].IsInput == true && arr[i].IsKey != "yes")
+            {
+                str = str + "\t /// <summary> " + "\n";
+                str = str + "\t /// " + arr[i].DurName + "\n";
+                str = str + "\t /// </summary> " + "\n";
+                str = str + "\t [Display(Name = \"" + arr[i].DurName + "\")]\n";
+                if (arr[i].IsEmpty == true)
+                {
+                    str = str + "\t [Required(ErrorMessage = \"{0}不允许为空\")]\n";
+                }
+                if (arr[i].IsLength != "")
+                {
+                    str = str + "\t [MaxLength(" + arr[i].IsLength + ", ErrorMessage = \"{0}长度不能大于{1}\")]\n";
+                }
+
+                str = str + "\t public " + GetColCategory(arr[i]) + " " + arr[i].Name + " {set;get;}\n";
+                str = str + "" + "\n";
+            }
+        }
+        str = str + "}" + "\n\n\n";
+
+        //output
+        str = str + "public class " + $("#txt_ClassName").val() + "Output" + "\n";
+        str = str + "{" + "\n";
+        str = str + "\t" + "public Guid ID { get; set; }" + "\n";
+        str = str + "\t" + "public string Message { get; set; }" + "\n";
+        str = str + "\t" + "" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "Output(){ }" + "\n";
+        str = str + "\t" + "" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "Output(string message, Guid ID)" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "this.Message = message;" + "\n";
+        str = str + "\t\t" + "this.ID = ID;" + "\n";
+        str = str + "\t" + "}" + "\n";
+
+        str = str + "}" + "\n";
+
+        $("#txt_ModelInput").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ModelInput"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    function CreateModelIsExistInput(arr)
+    {
+        $("#ModelIsExistInput").html("<textarea id='txt_ModelIsExistInput'></textarea>");
+        var str = "";
+        str = str + "HisPlatform.Application/" + $("#txt_ClassName").val() + "/Dto/" + $("#txt_ClassName").val() + "IsExist.cs \n\n";
+
+        str = str + "" + "public class " + $("#txt_ClassName").val() + "IsExistInput" + "\n";
+        str = str + "" + "{" + "\n";
+
+        for (var i = 0; i < arr.length; i++)
+        {
+            if (arr[i].IsExist == true)
+            {
+                str = str + "\t /// <summary> " + "\n";
+                str = str + "\t /// " + arr[i].DurName + "\n";
+                str = str + "\t /// </summary> " + "\n";
+                if (arr[i].IsKey != "yes")
+                {
+                    str = str + "\t public " + GetColCategory(arr[i]) + " " + arr[i].Name + " {set;get;}\n";
+                } else
+                {
+                    str = str + "\t public Guid " + arr[i].Name + " {set;get;}\n";
+                }
+
+                str = str + "" + "\n";
+            }
+        }
+        str = str + "" + "}" + "\n";
+        str = str + "\t" + "" + "\n";
+
+
+        str = str + "" + "public class " + $("#txt_ClassName").val() + "IsExistOutput" + "\n";
+        str = str + "" + "{" + "\n";
+        str = str + "\t" + "public bool IsExist { set; get; }" + "\n";
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+
+        $("#txt_ModelIsExistInput").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ModelIsExistInput"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    function CreateModelDelInput(arr){
+        $("#ModelDelInput").html("<textarea id='txt_ModelDelInput'></textarea>");
+        var str = "";
+        str = str + "HisPlatform.Application/" + $("#txt_ClassName").val() + "/Dto/" + $("#txt_ClassName").val() + "Del.cs \n\n";
+
+        str = str + "" + "public class " + $("#txt_ClassName").val() + "DelInput" + "\n";
+        str = str + "" + "{" + "\n";
+        str = str + "\t" + "public Guid ID { get; set; }" + "\n";
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+        str = str + "" + "public class " + $("#txt_ClassName").val() + "DelOutput" + "\n";
+        str = str + "" + "{" + "\n";
+        str = str + "\t" + "public Guid ID { get; set; }" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "DelOutput()" + "\n";
+        str = str + "\t" + "{ }" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "DelOutput(string message, Guid ID)" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "this.Message = message;" + "\n";
+        str = str + "\t\t" + "this.ID = ID;" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t" + "public string Message { get; set; }" + "\n";
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+
+
+        $("#txt_ModelDelInput").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ModelDelInput"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    function CreateInterface(arr)
+    {
+
+        $("#PanelInterface").html("<textarea id='txt_Interface'></textarea>");
+        var str = "";
+        str = str + "HisPlatform.Application/" + $("#txt_ClassName").val() + "/I" + $("#txt_ClassName").val() + "AppService.cs \n\n";
+
+        str = str + "public interface I" + $("#txt_ClassName").val() + "AppService : IApplicationService" + "\n";
+        str = str + "{" + "\n";
+        str = str + "\t" + "\n";
+
+
+        str = str + "\t/// <summary>" + "\n";
+        str = str + "\t/// 查询" + $("#txt_ChinaName").val() + "列表" + "\n";
+        str = str + "\t/// </summary>" + "\n";
+        str = str + "\t/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t/// <returns></returns>" + "\n";
+        str = str + "\t" + $("#txt_ClassName").val() + "QueryOutput Query" + $("#txt_ClassName").val() + "(" + $("#txt_ClassName").val() + "QueryInput input);" + "\n";
+        str = str + "\t" + "" + "\n";
+
+        str = str + "\t" + "/// <summary>" + "\n";
+        str = str + "\t" + "/// 查询单个详情" + "\n";
+        str = str + "\t" + "/// </summary>" + "\n";
+        str = str + "\t" + "/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t" + "/// <returns></returns>" + "\n";
+        str = str + "\t" + "" + $("#txt_ClassName").val() + "DetailOutput Query" + $("#txt_ClassName").val() + "Detail(" + $("#txt_ClassName").val() + "DetailInput input);" + "\n";
+        str = str + "\t" + "" + "\n";
+
+
+        str = str + "\t" + "/// <summary>" + "\n";
+        str = str + "\t" + "/// 添加或编辑" + "\n";
+        str = str + "\t" + "/// </summary>" + "\n";
+        str = str + "\t" + "/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t" + "/// <returns></returns>" + "\n";
+        str = str + "\t" + "" + $("#txt_ClassName").val() + "Output AddOrUpdate" + $("#txt_ClassName").val() + "(" + $("#txt_ClassName").val() + "Input input);" + "\n";
+        str = str + "\t" + "" + "\n";
+
+
+        str = str + "\t" + "/// <summary>" + "\n";
+        str = str + "\t" + "/// 删除" + "\n";
+        str = str + "\t" + "/// </summary>" + "\n";
+        str = str + "\t" + "/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t" + "/// <returns></returns>" + "\n";
+        str = str + "\t" + "" + $("#txt_ClassName").val() + "Output Delete" + $("#txt_ClassName").val() + "(" + $("#txt_ClassName").val() + "DelInput input);" + "\n";
+        str = str + "\t" + "" + "\n";
+
+
+        str = str + "\t" + "/// <summary>" + "\n";
+        str = str + "\t" + "/// 判断是否存在" + "\n";
+        str = str + "\t" + "/// </summary>" + "\n";
+        str = str + "\t" + "/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t" + "" + $("#txt_ClassName").val() + "IsExistOutput Get" + $("#txt_ClassName").val() + "IsExist(" + $("#txt_ClassName").val() + "IsExistInput input);" + "\n";
+        str = str + "\t" + "" + "\n";
+        str = str + "\t" + "" + "\n";
+
+        str = str + "}" + "\n";
+
+        $("#txt_Interface").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_Interface"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+
+    }
+
+    function CreateService(arr)
+    {
+        $("#PanelService").html("<textarea id='txt_Service'></textarea>");
+        var str = "";
+        str = str + "HisPlatform.Application/" + $("#txt_ClassName").val() + "/" + $("#txt_ClassName").val() + "AppService.cs \n\n";
+
+        str = str + "public class " + $("#txt_ClassName").val() + "AppService : HisPlatformAppServiceBase, I" + $("#txt_ClassName").val() + "AppService" + "\n";
+        str = str + "{" + "\n";
+        str = str + "\t" + "private readonly IRepository<" + $("#txt_ModelName").val() + ", Guid> _repository" + $("#txt_ModelName").val() + ";" + "\n";
+        str = str + "\t" + "" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "AppService(IRepository<" + $("#txt_ModelName").val() + ", Guid> repository" + $("#txt_ModelName").val() + ")" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "this._repository" + $("#txt_ModelName").val() + " = repository" + $("#txt_ModelName").val() + ";" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t" + "" + "\n";
+
+        str = str + "\t/// <summary>" + "\n";
+        str = str + "\t/// 查询" + $("#txt_ChinaName").val() + "列表" + "\n";
+        str = str + "\t/// </summary>" + "\n";
+        str = str + "\t/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t/// <returns></returns>" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "QueryOutput Query" + $("#txt_ClassName").val() + "(" + $("#txt_ClassName").val() + "QueryInput input)" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "if (input == null)  return null;" + "\n";
+        str = str + "\t\t" + "" + "\n";
+        str = str + "\t\t" + "IQueryable<" + $("#txt_ModelName").val() + "> tmpQuery = null;" + "\n";
+        str = str + "\t\t" + "tmpQuery = _repository" + $("#txt_ModelName").val() + ".GetAll();" + "\n";
+        str = str + "\t\t" + "//此处可以放查询过程" + "\n";
+        str = str + "\t\t" + "" + "\n";
+        str = str + "\t\t" + "" + "\n";
+        str = str + "\t\t" + "var query = tmpQuery.Select(obj => new " + $("#txt_ClassName").val() + "QueryItem()" + "\n";
+        str = str + "\t\t" + "{" + "\n";
+        str = str + "\t\t\t" + "ID =obj.Id," + "\n";
+        for (var i = 0; i < arr.length; i++)
+        {
+            if (arr[i].IsQueryOutput == true && arr[i].IsKey != "yes")
+            {
+                str = str + "\t\t\t" + "" + arr[i].Name + " =obj." + arr[i].Name + "," + "\n";
+            }
+
+        }
+        str = str + "\t\t" + "});" + "\n";
+        str = str + "\t\t" + "int total = query.Count();" + "\n";
+        str = str + "\t\t" + "var items = query.SortAndPaging(input).ToList();" + "\n";
+        str = str + "\t\t" + "" + "\n";
+        str = str + "\t\t" + "var output = new " + $("#txt_ClassName").val() + "QueryOutput()" + "\n";
+        str = str + "\t\t" + "{" + "\n";
+        str = str + "\t\t\t" + "TotalCount = total," + "\n";
+        str = str + "\t\t\t" + "Items = new ReadOnlyCollection<" + $("#txt_ClassName").val() + "QueryItem>(items)" + "\n";
+        str = str + "\t\t" + "};" + "\n";
+        str = str + "\t\t" + "return output;" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t" + "" + "\n";
+
+
+        str = str + "\t" + "/// <summary>" + "\n";
+        str = str + "\t" + "/// 查询单个详情" + "\n";
+        str = str + "\t" + "/// </summary>" + "\n";
+        str = str + "\t" + "/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t" + "/// <returns></returns>" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "DetailOutput Query" + $("#txt_ClassName").val() + "Detail(" + $("#txt_ClassName").val() + "DetailInput input)" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "if (input == null || input.ID == null || input.ID == CommonData.Guid)" + "\n";
+        str = str + "\t\t" + "{" + "\n";
+        str = str + "\t\t\t" + "return null;" + "\n";
+        str = str + "\t\t" + "}" + "\n";
+        str = str + "\t\t" + "var query = _repository" + $("#txt_ModelName").val() + ".FirstOrDefault(obj =>obj.Id == input.ID);" + "\n";
+        str = str + "\t\t" + "" + $("#txt_ClassName").val() + "DetailOutput result = Mapper.Map<" + $("#txt_ModelName").val() + ", " + $("#txt_ClassName").val() + "DetailOutput>(query);" + "\n";
+        str = str + "\t\t" + "return result;" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t" + "" + "\n";
+
+
+        str = str + "\t" + "/// <summary>" + "\n";
+        str = str + "\t" + "/// 添加或编辑" + "\n";
+        str = str + "\t" + "/// </summary>" + "\n";
+        str = str + "\t" + "/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t" + "/// <returns></returns>" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "Output AddOrUpdate" + $("#txt_ClassName").val() + "(" + $("#txt_ClassName").val() + "Input input)" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "if (input == null) throw new Exception(\"没有需要保存的数据\");" + "\n";
+        str = str + "\t" + "" + "\n";
+        str = str + "\t\t" + "" + $("#txt_ClassName").val() + "IsExistOutput tmpRes = Get" + $("#txt_ClassName").val() + "IsExist(new " + $("#txt_ClassName").val() + "IsExistInput() { YSMC = input.YSMC, YSID = input.ID });" + "\n";
+        str = str + "\t\t" + "if (tmpRes.IsExist)" + "\n";
+        str = str + "\t\t" + "{" + "\n";
+        str = str + "\t\t\t" + "return new " + $("#txt_ClassName").val() + "Output(\"" + $("#txt_ChinaName").val() + "已存在,请修改后重新保存。\", CommonData.Guid);" + "\n";
+        str = str + "\t\t" + "}" + "\n";
+        str = str + "\t\t" + "bool res = false;" + "\n";
+        str = str + "\t\t" + "" + $("#txt_ModelName").val() + " tmp = null;" + "\n";
+        str = str + "\t\t" + "" + $("#txt_ModelName").val() + " " + $("#txt_ClassName").val().toLowerCase() + " = AutoMapper.Mapper.Map<" + $("#txt_ClassName").val() + "Input, " + $("#txt_ModelName").val() + ">(input);" + "\n";
+        str = str + "\t\t" + "//此处可以放一些参数的处理，比如排序为null则赋值为0，删除标志位null则为0" + "\n";
+        str = str + "\t\t" + "" + "\n";
+        str = str + "\t\t" + "if (" + $("#txt_ClassName").val().toLowerCase() + ".Id == null || " + $("#txt_ClassName").val().toLowerCase() + ".Id == CommonData.Guid)" + "\n";
+        str = str + "\t\t" + "{" + "\n";
+        str = str + "\t\t\t" + "" + $("#txt_ClassName").val().toLowerCase() + ".Id = Guid.NewGuid();" + "\n";
+        str = str + "\t\t\t" + "//此处可以添加默认相关参数\n";
+        str = str + "\t\t\t" + "";
+        str = str + "\t\t\t" + "tmp = _repository" + $("#txt_ModelName").val() + ".Insert(" + $("#txt_ClassName").val().toLowerCase() + ");" + "\n";
+        str = str + "\t\t\t" + "res = tmp == null ? false : true;" + "\n";
+        str = str + "\t\t" + "}" + "\n";
+        str = str + "\t\t" + "else {" + "\n";
+        str = str + "\t\t\t" + "tmp = _repository" + $("#txt_ModelName").val() + ".FirstOrDefault(" + $("#txt_ClassName").val().toLowerCase() + ".Id);" + "\n";
+        str = str + "\t\t\t" + "if (tmp != null)" + "\n";
+        str = str + "\t\t\t" + "{" + "\n";
+
+        str = str + "\t\t\t\t" + "//此处放编辑时修改的字段" + "\n";
+        for (var i = 0; i < arr.length; i++)
+        {
+            if (arr[i].IsInput == true && arr[i].IsKey != "yes")
+            {
+                str = str + "\t\t\t\t" + "tmp." + arr[i].Name + " = " + $("#txt_ClassName").val().toLowerCase() + "." + arr[i].Name + ";" + "\n";
+            }
+        }
+
+
+        str = str + "\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t" + "res = tmp == null ? false : true;" + "\n";
+        str = str + "\t\t" + "}" + "\n";
+
+        str = str + "\t\t" + "//如果是C开头的表，要删除对应的缓存" + "\n";
+        if ($("#txt_ModelName").val()[0] == "C" || $("#txt_ModelName").val()[0] == "c")
+        {
+            str = str + "\t\t" + "this.ClearTenantCache<" + $("#txt_ModelName").val() + ">();" + "\n";
+        }else{
+            str = str + "\t\t" + "//this.ClearTenantCache<" + $("#txt_ModelName").val() + ">();" + "\n";
+        }
+
+
+        str = str + "\t\t" + "" + "\n";
+        str = str + "\t\t" + "return res ? new " + $("#txt_ClassName").val() + "Output(\"\", tmp == null ? CommonData.Guid : tmp.Id) : new " + $("#txt_ClassName").val() + "Output(\"保持" + $("#txt_ChinaName").val() + "信息过程中发生错误\", CommonData.Guid);" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t\t" + "" + "\n";
+
+
+        str = str + "\t" + "/// <summary>" + "\n";
+        str = str + "\t" + "/// 删除" + "\n";
+        str = str + "\t" + "/// </summary>" + "\n";
+        str = str + "\t" + "/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t" + "/// <returns></returns>" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "DelOutput Delete" + $("#txt_ClassName").val() + "(" + $("#txt_ClassName").val() + "DelInput input)" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "if (input == null || input.ID == null || input.ID == CommonData.Guid)" + "\n";
+        str = str + "\t\t" + "{" + "\n";
+        str = str + "\t\t\t" + "return null;" + "\n";
+        str = str + "\t\t" + "}" + "\n";
+        str = str + "\t\t" + "_repository" + $("#txt_ModelName").val() + ".Delete(obj => obj.Id == input.ID);" + "\n";
+        str = str + "\t\t" + "return new " + $("#txt_ClassName").val() + "DelOutput(\"\", input.ID);" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t" + "" + "\n";
+
+
+        str = str + "\t" + "" + "\n";
+        str = str + "\t" + "" + "\n";
+        str = str + "\t" + "/// <summary>" + "\n";
+        str = str + "\t" + "/// 判断是否存在" + "\n";
+        str = str + "\t" + "/// </summary>" + "\n";
+        str = str + "\t" + "/// <param name=\"input\"></param>" + "\n";
+        str = str + "\t" + "/// <returns></returns>" + "\n";
+        str = str + "\t" + "public " + $("#txt_ClassName").val() + "IsExistOutput Get" + $("#txt_ClassName").val() + "IsExist(" + $("#txt_ClassName").val() + "IsExistInput input)" + "\n";
+        str = str + "\t" + "{" + "\n";
+        str = str + "\t\t" + "//此处规则自己修正" + "\n";
+        str = str + "\t\t" + "//var drug = _repository" + $("#txt_ModelName").val() + ".FirstOrDefault(obj => obj.YSMC.ToUpper() == input.YSMC.ToUpper() && obj.Id != input.YSID);" + "\n";
+        str = str + "\t\t" + "var drug = _repository" + $("#txt_ModelName").val() + ".FirstOrDefault(obj => true);" + "\n";
+        str = str + "\t\t" + "" + $("#txt_ClassName").val() + "IsExistOutput result = new " + $("#txt_ClassName").val() + "IsExistOutput();" + "\n";
+        str = str + "\t\t" + "result.IsExist = drug == null ? false : true;" + "\n";
+        str = str + "\t\t" + "return result;" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t" + "" + "\n";
+        str = str + "}" + "\n";
+
+        $("#txt_Service").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_Service"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    function GetColCategory(obj)
+    {
+        //debugger;
+        var x = "string";
+        switch (obj.Category)
+        {
+            case "int":
+                x = "int";
+                break
+            case "datetime2":
+            case "datetime":
+                x = "DateTime";
+                break;
+            default:
+                x = "string";
+        }
+        return x;
+    }
+
+    function CreateViewIndex(arr){
+        $("#ViewIndex").html("<textarea id='txt_ViewIndex'></textarea>");
+        var str = "";
+        str = str + "/Content/" + $("#txt_ClassName").val() + "/scripts/" + $("#txt_ClassName").val() + "List.js \n\n";
+
+        str = str + "" + "@@\{" + "\n";
+        str = str + "\t" + "ViewBag.Title = \"病人卡片样式维护\";" + "\n";
+        str = str + "" + "}" + "\n";
+        str = str + "" + "@@section Head" + "\n";
+        str = str + "" + "{" + "\n";
+        str = str + "\t" + "<link href=\"~/Content/global/plugins/datatables/datatables.min.css\" rel=\"stylesheet\" type=\"text/css\" />" + "\n";
+        str = str + "\t" + "<link href=\"~/Content/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css\" rel=\"stylesheet\" type=\"text/css\" />" + "\n";
+        str = str + "\t" + "<script src=\"~/Content/global/plugins/datatables/datatables.min.js\" type=\"text/javascript\"><\/script>" + "\n";
+        str = str + "\t" + "<script src=\"~/Content/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js\" type=\"text/javascript\"><\/script>\n";
+        str = str + "\t" + "<link href=\"~/Content/global/plugins/datatables/datatables.min.css\" rel=\"stylesheet\" />" + "\n";
+        str = str + "" + "" + "\n";
+        str = str + "\t" + "<script src=\"~/Content/" + $("#txt_ClassName").val() + "/scripts/" + $("#txt_ClassName").val() + "List.js\"><\/script>" + "\n";
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+
+
+        str = str + "" + "<div class=\"page-content-wrapper\">" + "\n";
+        str = str + "\t" + "<div class=\"page-content\">" + "\n";
+        str = str + "\t\t" + "<div class=\"page-content-body\">" + "\n";
+        str = str + "\t\t\t" + "<div class=\"portlet light bordered\">" + "\n";
+        str = str + "\t\t\t\t" + "<div class=\"portlet-title\">" + "\n";
+        str = str + "\t\t\t\t\t" + "<div class=\"caption\">" + "\n";
+        str = str + "\t\t\t\t\t\t" + "<i class=\"icon-equalizer font-green-haze\"></i>" + "\n";
+        str = str + "\t\t\t\t\t\t" + "<span class=\"caption-subject font-green-haze bold uppercase\">@@ViewBag.Title</span>" + "\n";
+        str = str + "\t\t\t\t\t\t" + "<span class=\"caption-helper\"></span>" + "\n";
+        str = str + "\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t\t" + "<div class=\"actions\">" + "\n";
+        str = str + "\t\t\t\t\t\t" + "<a class=\"btn btn-circle btn-icon-only btn-default fullscreen\" href=\"javascript:;\"> </a>" + "\n";
+        str = str + "\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t" + "<div id=\"main\" class=\"portlet-body form\">" + "\n";
+        str = str + "\t\t\t\t\t" + "<div class=\"form-horizontal\">" + "\n";
+        str = str + "\t\t\t\t\t\t" + "<div class=\"row margin-bottom-10\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "<div class=\"col-md-4\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "<button class=\"btn green\" type=\"button\" id=\"btn_Add" + $("#txt_ClassName").val() + "\"><span class=\"glyphicon glyphicon-plus\"></span>&nbsp;新增</button>" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "<div class=\"col-md-8\" style=\"text-align:right; padding-right:20px;\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "<label>样式名称：</label>&nbsp;" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "<input type=\"text\" placeholder=\"按名称或拼音码查询\" class=\"input-group-control\" id=\"txt-ypmc\" style=\"height:28px;border:1px solid #c2cad8;\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "&nbsp;&nbsp;<button class=\"btn green\" type=\"button\" id=\"btn-Select\"><span class=\"glyphicon glyphicon-search\"></span>&nbsp;查询</button>" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t" + "<div id=\"sample_1_2_wrapper\" class=\"dataTables_wrapper no-footer\">" + "\n";
+        str = str + "\t\t\t\t\t" + "<div class=\"portlet-body form\">" + "\n";
+        str = str + "\t\t\t\t\t\t" + "<table class=\"table table-striped table-bordered table-hover table-checkable\" id=\"table_" + $("#txt_ClassName").val() + "\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "<thead>" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "<tr role=\"row\">" + "\n";
+
+        str = str + "\t\t\t\t\t\t\t\t\t" + "<th style=\"text-align:center;width:80px\"> 编辑 </th>" + "\n";
+
+        str = str + "\t\t\t\t\t\t\t\t" + "</tr>" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "</thead>" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "<tbody></tbody>" + "\n";
+        str = str + "\t\t\t\t\t\t" + "</table>" + "\n";
+        str = str + "\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t" + "</div>" + "\n";
+        str = str + "\t" + "</div>" + "\n";
+        str = str + "" + "</div>" + "\n";
+        str = str + "" + "" + "\n";
+
+        str = str + "" + "@@{" + "\n";
+        str = str + "\t" + "Html.RenderPartial(\"_Edit" + $("#txt_ClassName").val() + "_Partial\");" + "\n";
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+
+        $("#txt_ViewIndex").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ViewIndex"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    function CreateViewEdit(arr){
+        $("#ViewEdit").html("<textarea id='txt_ViewEdit'></textarea>");
+        var str = "";
+        str = str + "HisPlatform.Application/" + $("#txt_ClassName").val() + "/" + $("#txt_ClassName").val() + "AppService.cs \n\n";
+
+        str = str + "" + "@@model HisPlatform.WebApp.Models." + $("#txt_ClassName").val() + "." + $("#txt_ClassName").val() + "Model" + "\n";
+        str = str + "" + "<div class=\"modal fade\" id=\"edit" + $("#txt_ClassName").val() + "Partial\" data-backdrop=\"static\" data-keyboard=\"false\">" + "\n";
+        str = str + "\t" + "<div class=\"modal-dialog modal-lg-4\">" + "\n";
+        str = str + "\t\t" + "<div class=\"modal-content\">" + "\n";
+        str = str + "\t\t\t" + "<div class=\"modal-header\">" + "\n";
+        str = str + "\t\t\t\t" + "<p2 id=\"addrole_title\">病人卡片样式维护</p2>" + "\n";
+        str = str + "\t\t\t\t" + "<button type=\"button\" class=\"close\" data-dismiss=\"modal\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>" + "\n";
+        str = str + "\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t" + "<div class=\"modal-body\">" + "\n";
+        str = str + "\t\t\t\t" + "<form id=\"userform\" action=\"#\" class=\"form-horizontal\">" + "\n";
+
+        str = str + "\t\t\t\t\t" + "<div class=\"row\">" + "\n";
+        str = str + "\t\t\t\t\t\t" + "<div class=\"col-md-12\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "<div class=\"form-group\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "<div class=\"col-md-3 text-right\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "样式名称：" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "<div class=\"col-md-9\">" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "@@Html.TextBoxFor(p => p.BedTypeInput.YSMC, new { @@class = \"form-control\", @@data_keynext = \"#PYM\" }).TrimPrefix()" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t\t\t" + "</div>" + "\n";
+
+
+        str = str + "\t\t\t\t" + "</form>" + "\n";
+        str = str + "\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t\t" + "<div class=\"modal-footer\">" + "\n";
+        str = str + "\t\t\t\t" + "<label id=\"customerID\" hidden=\"hidden\"></label>" + "\n";
+        str = str + "\t\t\t\t" + "<button type=\"button\" class=\"btn green\" id=\"btn_Submit\"><span class=\"fa fa-check\"></span>&nbsp;确定</button>" + "\n";
+        str = str + "\t\t\t\t" + "<button type=\"button\" class=\"btn green\" data-dismiss=\"modal\" id=\"cancel\"><span class=\"fa fa-close\"></span>&nbsp;取消</button>" + "\n";
+        str = str + "\t\t\t" + "</div>" + "\n";
+        str = str + "\t\t" + "</div>" + "\n";
+        str = str + "\t" + "</div>" + "\n";
+        str = str + "" + "</div>" + "\n";
+        str = str + "" + "" + "\n";
+
+        $("#txt_ViewEdit").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ViewEdit"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    function CreateViewIndexJS(arr){
+        $("#ViewIndexJS").html("<textarea id='txt_ViewIndexJS'></textarea>");
+        var str = "";
+        str = str + "/Content/" + $("#txt_ClassName").val() + "/scripts/" + $("#txt_ClassName").val() + "List.js \n\n";
+
+        str = str + "" + "$(function (){" + "\n";
+        str = str + "\t" + "$(\"#btn_AddBedType\").click(function (){" + "\n";
+        str = str + "\t\t" + "Clear();" + "\n";
+        str = str + "\t\t" + "$(\"#customerID\").val(\"\");" + "\n";
+        str = str + "\t\t" + "$(\"#editBedTypePartial\").modal({" + "\n";
+        str = str + "\t\t\t" + "backdrop: 'static'," + "\n";
+        str = str + "\t\t\t" + "keyboard: true" + "\n";
+        str = str + "\t\t" + "});" + "\n";
+        str = str + "\t" + "});" + "\n";
+        str = str + "" + "" + "\n";
+        str = str + "\t" + "$(\"#btn_Submit\").click(function (){" + "\n";
+        str = str + "\t\t" + "Submit();" + "\n";
+        str = str + "\t" + "});" + "\n";
+        str = str + "\t" + "Query();" + "\n";
+        str = str + "" + "})" + "\n";
+        str = str + "" + "" + "\n";
+
+        str = str + "" + "//查询方法" + "\n";
+        str = str + "" + "function Query(){" + "\n";
+        str = str + "\t" + "if ($.fn.dataTable.isDataTable('#table_BedType')){" + "\n";
+        str = str + "\t\t" + "$(\"#table_BedType\").DataTable().ajax.reload();" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t" + "else{" + "\n";
+        str = str + "\t\t" + "$(\"#table_BedType\").DataTable({" + "\n";
+        str = str + "\t\t\t" + "ajax: function (data, callback, settings){" + "\n";
+        str = str + "\t\t\t\t" + "var input = $.dataTablesToAbpInput(data, settings);" + "\n";
+        str = str + "\t\t\t\t" + "input.YSMC = $('#searchInput').val();" + "\n";
+        str = str + "\t\t\t\t" + "abp.ui.setBusy(\"#main\"," + "\n";
+        str = str + "\t\t\t\t\t" + "abp.services.app.BedType.QueryBedType(input)" + "\n";
+        str = str + "\t\t\t\t\t" + ".done(function (data){" + "\n";
+        str = str + "\t\t\t\t\t\t" + "if (data.Success){" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "if (data.TargetUrl != null){" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "window.location = data.TargetUrl;" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "else{" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "if (data.Result != null){" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "var resonse = $.dataTablesFromAbpOutput(input, data.Result, settings);" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "callback(resonse);" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t\t\t" + "else{" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "abp.message.warn(data.Error.Message);" + "\n";
+        str = str + "\t\t\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t\t" + "})" + "\n";
+        str = str + "\t\t\t\t\t" + ".fail(function (result){" + "\n";
+        str = str + "\t\t\t\t\t\t" + "abp.message.error(result);" + "\n";
+        str = str + "\t\t\t\t\t\t" + "QueryEabled();" + "\n";
+        str = str + "\t\t\t\t\t" + "})" + "\n";
+        str = str + "\t\t\t\t" + ");" + "\n";
+        str = str + "\t\t\t" + "}," + "\n";
+        str = str + "\t\t\t" + "\"fnCreatedRow\": function (row, data, dataIndex){" + "\n";
+        str = str + "\t\t\t\t" + "$(row).children('td').eq(0).attr('style', 'text-align: center;')" + "\n";
+        str = str + "\t\t\t\t" + "$(row).children('td').eq(1).attr('style', 'text-align: center;')" + "\n";
+        str = str + "\t\t\t" + "}," + "\n";
+        str = str + "\t\t\t" + "\"columns\": [" + "\n";
+        str = str + "\t\t\t\t" + "{ \"data\": null ,render:function(data){" + "\n";
+        str = str + "\t\t\t\t\t" + "var actions = \"<button id='\" + data.ID + \"' onclick='EditClick(this)' class='btn btn-xs btn-outline btn-circle blue btn-edit' title='编辑'><i class='fa fa-edit'></i></button>\";" + "\n";
+        str = str + "\t\t\t\t\t" + "return actions;" + "\n";
+        str = str + "\t\t\t\t" + "}}," + "\n";
+        str = str + "\t\t\t\t" + "{ \"data\": null ,render:function(data){" + "\n";
+        str = str + "\t\t\t\t\t" + "var actions = \"<button id='\" + data.ID + \"' onclick='ViewClick(this)' class='btn btn-xs btn-outline btn-circle blue btn-edit' title='预览'><i class='fa fa-edit'></i></button>\";" + "\n";
+        str = str + "\t\t\t\t\t" + "return actions;" + "\n";
+        str = str + "\t\t\t\t" + "}}," + "\n";
+        //此处更改显示字段
+        str = str + "\t\t\t\t" + "{ \"data\": \"YSMC\" }," + "\n";
+
+        str = str + "\t\t\t" + "]" + "\n";
+        str = str + "\t\t" + "});" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "" + "};" + "\n";
+
+        str = str + "" + "//提交" + "\n";
+        str = str + "" + "function Submit(){" + "\n";
+        str = str + "\t" + "if (!$('#userform').valid()){" + "\n";
+        str = str + "\t\t" + "abp.message.warn(\"信息填写不完整。\");" + "\n";
+        str = str + "\t" + "return;" + "\n";
+        str = str + "\t" + "}" + "\n";
+        str = str + "\t" + "var input = { YSMC: $(\"#YSMC\").val(), DLID: $(\"#customerID\").val() };" + "\n";
+        str = str + "\t" + "abp.ui.setBusy(\"#main\"," + "\n";
+        str = str + "\t\t" + "abp.services.app.BedType.GetBedTypeIsExist(input)" + "\n";
+        str = str + "\t\t" + ".done(function (data){" + "\n";
+        str = str + "\t\t\t" + "if (data.Success){" + "\n";
+        str = str + "\t\t\t\t" + "if (!data.Result.IsExist){" + "\n";
+        str = str + "\t\t\t\t\t" + "var input = GetInputData();" + "\n";
+        str = str + "\t\t\t\t\t" + "abp.ui.setBusy(\"#main\"," + "\n";
+        str = str + "\t\t\t\t\t\t" + "abp.services.app.BedType.AddOrUpdateBedType(input)" + "\n";
+        str = str + "\t\t\t\t\t\t" + ".done(function (data){" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "if (data.Success){" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "if (data.Result.Message == null || data.Result.Message == \"\"){" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "abp.notify.success(\"操作成功!\");" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "$('#editBedTypePartial').modal('hide');" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "$(\"#customerID\").val(data.Result.ID);" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "$(\"#table_BedType\").DataTable().ajax.reload();" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "else{" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t\t" + "abp.message.warn(data.Result.Message);" + "\n";
+        str = str + "\t\t\t\t\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t\t\t" + "})" + "\n";
+        str = str + "\t\t\t\t\t\t" + ".fail(function (result){" + "\n";
+        str = str + "\t\t\t\t\t\t\t" + "abp.message.error(result);" + "\n";
+        str = str + "\t\t\t\t\t\t" + "})" + "\n";
+        str = str + "\t\t\t\t\t" + ")" + "\n";
+        str = str + "\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t" + "else{" + "\n";
+        str = str + "\t\t\t\t\t" + "abp.message.warn(\"当前病人样式已经存在,请更改\");" + "\n";
+        str = str + "\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t" + "}" + "\n";
+        str = str + "\t\t" + "})" + "\n";
+        str = str + "\t\t" + ".fail(function (result){" + "\n";
+        str = str + "\t\t" + "abp.message.error(result);" + "\n";
+        str = str + "\t" + "})" + "\n";
+        str = str + "\t" + " );" + "\n";
+        str = str + "" + "};" + "\n";
+        str = str + "" + "" + "\n";
+
+
+        str = str + "" + "//获取input的信息" + "\n";
+        str = str + "" + "function GetInputData(){" + "\n";
+        str = str + "\t" + "var result = {" + "\n";
+        str = str + "\t\t" + "ID: $(\"#customerID\").val()," + "\n";
+
+        str = str + "\t\t" + "YSMC: $(\"#YSMC\").val()," + "\n";
+
+        str = str + "\t" + "};" + "\n";
+        str = str + "\t" + "return result;" + "\n";
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+
+
+
+        str = str + "" + "//编辑信息" + "\n";
+        str = str + "" + "function EditClick(obj){" + "\n";
+        str = str + "\t" + "Clear();" + "\n";
+        str = str + "\t" + "$(\"#customerID\").val(obj.id);" + "\n";
+        str = str + "\t" + "abp.ui.setBusy(\"#main\"," + "\n";
+        str = str + "\t\t" + "abp.services.app.BedType.QueryBedTypeDetail({ ID: obj.id })" + "\n";
+        str = str + "\t\t" + ".done(function (data){" + "\n";
+        str = str + "\t\t\t" + "if (data.Success){" + "\n";
+        str = str + "\t\t\t\t" + "if (data.Result != null){" + "\n";
+        str = str + "\t\t\t\t\t" + "SetValues(data.Result);" + "\n";
+        str = str + "\t\t\t\t\t" + "$(\"#editBedTypePartial *\").removeClass(\"input-validation-error\").parents(\".form-group\").removeClass(\"has-error\").removeAttr(\"title\");" + "\n";
+        str = str + "\t\t\t\t\t" + "$(\"#editBedTypePartial\").modal({" + "\n";
+        str = str + "\t\t\t\t\t\t" + "backdrop: 'static'," + "\n";
+        str = str + "\t\t\t\t\t\t" + "keyboard: true" + "\n";
+        str = str + "\t\t\t\t\t" + "});" + "\n";
+        str = str + "\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t\t" + "else{" + "\n";
+        str = str + "\t\t\t\t\t" + "abp.message.warn(\"你要修改的床头卡样式不存在.\");" + "\n";
+        str = str + "\t\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t" + "}" + "\n";
+        str = str + "\t\t\t" + "else{" + "\n";
+        str = str + "\t\t\t\t" + "abp.message.warn(data.Error.Message);" + "\n";
+        str = str + "\t\t\t" + "}" + "\n";
+        str = str + "\t\t" + "})" + "\n";
+        str = str + "\t\t" + ".fail(function (result){" + "\n";
+        str = str + "\t\t\t" + "abp.message.error(result);" + "\n";
+        str = str + "\t\t\t" + "QueryEabled();" + "\n";
+        str = str + "\t\t" + "})" + "\n";
+        str = str + "\t" + ");" + "\n";
+        str = str + "" + "};" + "\n";
+        str = str + "" + "" + "\n";
+
+
+        str = str + "" + "//清除页面控件值" + "\n";
+        str = str + "" + "function Clear(){" + "\n";
+
+        str = str + "\t" + "$(\"#YSMC\").val(\"\");" + "\n";
+
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+
+
+
+        str = str + "" + "//页面控件赋值" + "\n";
+        str = str + "" + "function SetValues(data){" + "\n";
+
+        str = str + "\t" + "$(\"#YSMC\").val(data.YSMC);" + "\n";
+
+        str = str + "" + "}" + "\n";
+        str = str + "" + "" + "\n";
+
+        str = str + "" + "" + "\n";
+
+        $("#txt_ViewIndexJS").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ViewIndexJS"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: false, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+    ///保存日志
+    function SaveLog(TableName,obj)
+    {
+        var postJson = new Object();
+        postJson.TableName = TableName;
+        postJson.ModelName = $("#txt_ModelName").val();
+        postJson.ClassName = $("#txt_ClassName").val();
+        postJson.ChinaName = $("#txt_ChinaName").val();
+
+        postJson.tableColunmList = obj;
+        $.ajax({
+            type: 'Post',
+            url: "/api/DbLink?TableName=" + TableName,
+            data: JSON.stringify(postJson),
+            dataType: 'json',
+            async: false,
+            contentType: 'application/json',
+            success: function (u)
+            {
+                tempData = u;
+            },
+            error: function ()
+            {
+
+            }
+        });
+    }
+</script>
+

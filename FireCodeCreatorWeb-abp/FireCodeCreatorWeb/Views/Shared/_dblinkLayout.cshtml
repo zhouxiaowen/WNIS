@@ -1,0 +1,79 @@
+﻿
+
+<div class="row" style="margin:5px 15px;">
+    <div class="col-md-12">
+        <div class="form-group height-35">
+            <div class="col-sm-2 control-label text-right  no-padding height-35" style="line-height:3;">数据库地址：&nbsp;</div>
+            <div class="col-sm-10 no-padding">
+                <input id="txt_ServerName" type="text" class="form-control" placeholder="数据库地址"  value=".\sqlexpress" />
+            </div>
+        </div>
+        <div class="form-group height-35">
+            <div class="col-sm-2 control-label text-right  no-padding height-35" style="line-height:3;">数据库账号：&nbsp;</div>
+            <div class="col-sm-10 no-padding"><input id="txt_UName" type="text" class="form-control" placeholder="数据库地址" value="sa" /></div>
+            @*<input id="txt_UName" type="text" class="form-control" placeholder="数据库账号"  value="./sqlexpress" />*@
+        </div>
+        <div class="form-group height-35">
+            <div class="col-sm-2 control-label text-right  no-padding height-35" style="line-height:3;">数据库密码：&nbsp;</div>
+            <div class="col-sm-7 control-label no-padding"> <input id="txt_Pwd" type="password" class="form-control" placeholder="数据库密码" required="" value="a123"></div>
+            <div class="col-sm-3">
+                <button class="btn btn-blue" type="button" onclick="getDbList()" style="height:34px;" ><i class="fa fa-link"></i>&nbsp;连接数据库</button>
+                <span id="span_LinkStatus"></span>
+            </div>
+        </div>
+        <hr class="wide" />
+        <div class="form-group height-35">
+            <div class="col-sm-2  control-label text-right  no-padding height-35" style="line-height:3;">数据库列表：</div>
+            <div class="col-sm-10 no-padding">
+                <select id="sel_DbList" style="width:100%;">
+                    @*<option value="AL" />Alabama*@
+                </select>
+            </div>
+            
+        </div>
+
+        <hr class="wide" />
+        <div class="form-group height-30 no-padding" style="margin:0px;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3"><button class="btn btn-blue" type="button" id="btn_Submit" style="height:28px;"><span class="fa fa-check"></span>&nbsp;确定</button></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3"><button class="btn btn-blue" type="button" onclick="getDbList()" style="height:28px;"><span class="fa fa-close"></span>&nbsp;取消</button></div>
+            <div class="col-sm-2"></div>
+           
+
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/assets/js/select2/select2.js"></script>
+
+
+<script>
+    function getDbList()
+    {
+        $("#span_LinkStatus").html("<font color='blue'>数据库链接中...</font>");
+        $("#sel_DbList").html();
+        $.ajax({
+            url: "/api/DbLink?ServerName=" + $("#txt_ServerName").val() + "&UserName=" + $("#txt_UName").val() + "&Pwd=" + $("#txt_Pwd").val(),
+            type: "get",
+            dataType: 'json',
+            success: function (json)
+            {
+                $("#span_LinkStatus").html("<font color='green'>链接数据库成功</font>")
+                layer.msg("链接数据库成功！");
+                //debugger;
+                for (var i = 0; i < json.length; i++)
+                {
+                    $("#sel_DbList").append("<option value='" + json[i] + "'>" + json[i] + "</option>");
+                    //debugger;
+                }
+            },
+            error: function (json)
+            {
+                $("#span_LinkStatus").html("<font color='red'>链接数据库失败<br/>失败原因：" + json.responseJSON.ExceptionMessage + "</font>");
+                layer.msg("链接数据库失败！");
+            }
+        });
+        //debugger;
+        //$("#e1").select2();
+    }
+</script>

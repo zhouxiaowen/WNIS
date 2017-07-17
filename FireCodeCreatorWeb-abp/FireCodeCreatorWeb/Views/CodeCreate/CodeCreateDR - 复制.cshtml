@@ -1,0 +1,522 @@
+﻿
+@{
+    ViewBag.Title = "Module";
+
+}
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            @*全屏使用*@
+            <div class="widget-header bordered-bottom bordered-sky">
+                <span class="widget-caption"><i class="fa fa-cogs"></i>&nbsp;代码生成器</span>
+                <div class="widget-buttons">
+                    <a href="#" id="fullscreen-toggler" class="fullscreen">
+                        <i class="glyphicon glyphicon-fullscreen"></i>
+                    </a>
+                    <a href="#" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="sidebar-toggler" href="#">
+                        <i class="fa fa-arrows-h"></i>
+                    </a>
+                    @*<a href="#" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a href="#" data-toggle="dispose">
+                            <i class="fa fa-times"></i>
+                        </a>*@
+                </div>
+            </div>
+            <div class="widget-body no-padding">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12"  style="padding:10px 8px; ">
+                                    <a id="btn_databaselink" class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-refresh"></i>&nbsp;连接数据库</a>
+                                </div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12"  style="padding:0px 0px 5px 5px; ">
+
+                                        <span class="input-icon icon-right">
+                                            <input  type="text" placeholder="关键字过滤" id="txt_Key" class="form-control">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+
+                                </div>
+                            </div>
+                            <div class="row" style="border:1px solid #ccc; padding:5px; margin-left:-10px;">
+                                <ul id="treeDemo" class="ztree" style="margin-top:0; width:100%; height:auto;"></ul>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <a class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                            <div class="row" style="padding:0px 10px;">
+                                <table class="table table-bordered table-hover table-striped" id="table_Colunm">
+                                     <thead class=""  >
+                                         @*bordered-blueberry*@
+                                         <tr role="row" style="background-color:#F5F5F5">
+                                             <th  rowspan="2"  style="width:100px;vertical-align:middle" class="text-center">字段名</th>
+                                             <th  rowspan="2" style="width:100px;vertical-align:middle" class="text-center">对应名称</th>
+                                             <th  rowspan="2"  style="width:100px;vertical-align:middle" class="text-center">类型</th>
+                                             <th  rowspan="2"  style="width:100px;vertical-align:middle" class="text-center">长度</th>
+                                             <th  rowspan="2"  style="width:100px;vertical-align:middle" class="text-center">允许空</th>
+                                             <th  rowspan="2" style="width:100px;vertical-align:middle" class="text-center">主键</th>
+                                             <th colspan="2" style="width:200px;" class="text-center">查询相关</th>
+                                         </tr>
+                                         <tr role="row">
+                                             <th style="width:100px;">查询input</th>
+                                             <th style="width:100px;">查询output</th>
+                                         </tr>
+                                     </thead>
+                                </table>
+                            </div>
+                            <hr />
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-3">
+                                    类名：<input type="text" placeholder="类名" class="form-control" value="LargePackage">
+                                </div>
+                                <div class="col-md-3">
+                                    类名：<input type="text" placeholder="类名"  class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    类名：<input type="text" placeholder="类名" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    类名：<input type="text" placeholder="类名" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <a class="btn btn-blue" href="javascript:void(0);" id="btn_Create"><i class="fa fa-pencil"></i>&nbsp;生成代码</a>
+                                </div>
+                            </div>
+                            <div class="row" style="padding:10px 0px;">
+                                <div class="col-md-12">
+                                    <div class="tabbable">
+                                        <ul id="myTab" class="nav nav-tabs">
+                                            <li class="active">
+                                                <a href="#ModelQueryInput" data-toggle="tab">
+                                                    查询录入参数(ModelQueryInput)
+                                                </a>
+                                            </li>
+                                            <li class="tab-red">
+                                                <a href="#ModelQueryOutput" data-toggle="tab">
+                                                    查询录入参数(ModelQueryOutput)
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    Dropdown
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="ModelQueryInput">
+                                                
+                                            </div>
+                                            <div class="tab-pane" id="ModelQueryOutput">
+                                                
+                                            </div>
+                                            <div class="tab-pane" id="dropdown">
+                                                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
+                                            </div>
+                                            <div class="tab-pane" id="dropdown2">
+                                                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Email Modal Templates-->
+<div id="myModal" style="display:none;">
+    @{
+        Html.RenderPartial("../Shared/_dblinkLayout");
+    }
+</div>
+<!--End Email Templates-->
+
+
+<script src="~/Scripts/jquery.ztree.all-3.5.min.js"></script>
+<link href="~/Content/zTree.theme.metro.css" rel="stylesheet" />
+
+<script src="~/Scripts/assets/js/bootbox/bootbox.js"></script>
+
+<script>
+    //ZTree
+    var oTable;
+    var setting = {
+        view: {
+            addHoverDom: addHoverDom,
+            removeHoverDom: removeHoverDom,
+            selectedMulti: false
+        },
+        check: {
+            enable: false
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        edit: {
+            enable: false
+        },
+        callback: {
+            onClick: zTreeOnClick
+        }
+    };
+    var gridsetting = [{ "data": "Name" },
+                           { "data": "DurName", "type": "text" },
+                           {
+                               "data": "Category",
+                               //"createdCell": function (type, datatype, data, row, col) { debugger; },
+                               "render": function (datatype, display, data)
+                               {
+                                   return data.Category;
+                               }
+                           },
+                           { "data": "Length" },
+                           { "data": "IsNull","type": "text" },
+                           {
+                               "data": "IsKey"
+                           },
+                           { "data": "IsQueryInput", "type": "checkbox" },
+                           { "data": "IsQueryOutput", "type": "checkbox" }
+    ];
+
+    function zTreeOnClick(event, treeId, treeNode)
+    {
+        var a = treeNode.name;
+        if (treeNode.pId != null)
+        {
+            //debugger;
+            if ($.fn.dataTable.isDataTable('#table_Colunm'))
+            {
+                $("#table_Colunm").DataTable().ajax.reload();
+            }
+            else
+            {
+                oTable = $('#table_Colunm').dataTable({
+                    "bPaginate": false, //翻页功能
+                    "bFilter": false, //过滤功能
+                    "bInfo": false,//页脚信息
+                   // columnDefs:
+                   //[
+                   //    {
+                   //        targets: 1,
+                   //        data: null,
+                   //        render: function (data, type, row, meta)
+                   //        {
+                   //            //debugger;
+                   //            var actions = "<input onchange='TxtChange(\"DurName\",\"" + row.Name + "\")'  tag='" + row.Name + "' type='text' val='" + row.DurName + "' />";
+                   //            return actions;
+                   //        }
+                   //    }
+                   //],
+
+                    ajax: function (data, callback, settings)
+                    {
+                        var urlStr;
+                        if (treeNode.pId == 1)
+                        {
+                            urlStr = "/api/DbLink?TableName=" + zTreeObj.getSelectedNodes()[0].name + "&DBName=" + $("#sel_DbList").val() + "&ServerName=" + $("#txt_ServerName").val() + "&UserName=" + $("#txt_UName").val() + "&Pwd=" + $("#txt_Pwd").val();
+                        } else if (treeNode.pId == 2)
+                        {
+                            urlStr = "/api/DbLink?ViewName=" + zTreeObj.getSelectedNodes()[0].name + "&DBName=" + $("#sel_DbList").val() + "&ServerName=" + $("#txt_ServerName").val() + "&UserName=" + $("#txt_UName").val() + "&Pwd=" + $("#txt_Pwd").val();
+                        }
+
+                        $.ajax({
+                            url: urlStr,
+                            type: "get",
+                            dataType: 'json',
+                            success: function (json)
+                            {
+                                //debugger;
+                                var response = {};
+                                response.data = json;
+                                callback(response);
+                            },
+                            error: function (json)
+                            {
+                                //$("#span_LinkStatus").html("<font color='red'>链接数据库失败<br/>失败原因：" + json.responseJSON.ExceptionMessage + "</font>");
+                                layer.msg("链接数据库失败！");
+                            }
+                        });
+                    },
+                    "fnDrawCallback": function (obj)            //加载完成后执行
+                    {
+
+                        for (var i = 0; i < obj.aoColumns.length; i++)
+                        {
+                            if (obj.aoColumns[i].sType == "text")           //text处理
+                            {
+                                $("#table_Colunm tbody tr").each(function (index)
+                                {
+                                    $(this).find("td:eq("+i+")").click(function ()
+                                    {
+                                        $(this).html("<input onblur='TxtAfterChange(this," + index + "," + $(this).parents("tr").find("td").index($(this)) + ")'  type='text' style='border:0px;' value='" + $(this).html() + "' />");
+                                        $(this).find("input").focus();
+                                        $(this).unbind("click");
+                                    });
+                                })
+                            }
+
+                            if (obj.aoColumns[i].sType == "checkbox")
+                            {
+                                $("#table_Colunm tbody tr").each(function (index)
+                                {
+                                    var result = 0;
+                                    //if (obj.aoColumns[i].render != null)    //如果有格式化函数
+                                    //{
+                                    //    result = obj.aoColumns[i].render("","",obj);
+                                    //} else
+                                    //{
+                                    result = $(this).find("td:eq(" + i + ")").html();
+
+                                    //}
+                                    //debugger;
+                                    if (result == true || result == "true" || result == '1')     //判断是否选中
+                                    {
+                                        
+                                        $(this).find("td:eq(" + i + ")").html("<input type='checkbox' checked='checked' />");
+                                    } else
+                                    {
+                                        $(this).find("td:eq(" + i + ")").html("<input type='checkbox' />");
+                                    }
+                                    
+                                })
+                            }
+                        }
+
+                        
+                    },
+
+                    "columns": gridsetting
+                });
+            }
+            
+        }
+    };
+
+    function TxtAfterChange(obj,row,col)
+    {
+        $("#table_Colunm tbody tr:eq(" + row + ") td:eq(" + col + ")").html($(obj).val());
+        $("#table_Colunm tbody tr:eq(" + row + ") td:eq(" + col + ")").attr("class", "danger");
+        $("#table_Colunm tbody tr:eq(" + row + ") td:eq(" + col + ")").click(function ()
+        {
+            var str = $(this).html();
+            $(this).html("<input onblur='TxtAfterChange(this," + row + "," + col + ")'  style='border:0px;'  type='text' value='" + str + "' />");
+            $(this).find("input").focus();
+            $(this).find("input")[0].scrollLeft = 700;
+            $(this).unbind("click");
+        });
+
+    }
+
+    var zNodes = [
+     { id: 1, pId: 0, name: "表", open: true },
+     
+     { id: 3, pId: 0, name: "视图", open: true }
+    ];
+
+    
+    function addHoverDom(treeId, treeNode)
+    {
+        var sObj = $("#" + treeNode.tId + "_span");
+        if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+        var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+         + "' title='add node' onfocus='this.blur();'></span>";
+        sObj.after(addStr);
+        var btn = $("#addBtn_" + treeNode.tId);
+        if (btn) btn.bind("click", function ()
+        {
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            zTree.addNodes(treeNode, { id: (100 + newCount), pId: treeNode.id, name: "new node" + (newCount++) });
+            return false;
+        });
+    };
+    function removeHoverDom(treeId, treeNode)
+    {
+        $("#addBtn_" + treeNode.tId).unbind().remove();
+    };
+
+    var zTreeObj;
+    $(function ()
+    {
+        zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
+        //$('#searchable').dataTable({
+        //    //"sDom": "Tflt<'row DTTTFooter'<'col-sm-6'i><'col-sm-6'p>>",
+        //    "iDisplayLength": 10,
+        //    "aLengthMenu": [[5, 10, 12, -1, 0], ['5', '10', '12', "所有", "0"] // change per page values here
+        //    ],
+
+        //    "bPaginate": false, //翻页功能
+        //    "bLengthChange": false, //改变每页显示数据数量
+        //    "bFilter": false, //过滤功能
+        //    "bSort": false, //排序功能
+        //    "bInfo": true,//页脚信息
+        //    "bAutoWidth": true,//自动宽度
+        //    "language": {
+        //        //"search": "",
+        //        "sInfo": "从第 _START_ 条到第 _END_ 条，总 _TOTAL_ 条",
+        //        //"sLengthMenu": "_MENU_",
+        //        "oPaginate": {
+        //            "sPrevious": "前一页",
+        //            "sNext": "下一页"
+        //        }
+        //    },
+        //    "aoColumns": [
+        //      { "bSortable": false },
+        //      null,
+        //      { "bSortable": false },
+        //      null,
+        //      { "bSortable": false }
+        //    ],
+        //    "aaSorting": []
+        //});
+
+        $("#btn_databaselink").on('click', function ()
+        {
+            layer.open({
+                type: 1,
+                closeBtn: 0,
+                area: '606px',
+                shadeClose: true,
+                title:"链接数据库",
+                content: $('#myModal')
+            });
+
+          
+        });
+
+        $("#btn_Submit").on('click', function ()
+        {
+            $.ajax({
+                url: "/api/DbLink?DBName=" + $("#sel_DbList").val() + "&ServerName=" + $("#txt_ServerName").val() + "&UserName=" + $("#txt_UName").val() + "&Pwd=" + $("#txt_Pwd").val(),
+                type: "get",
+                dataType: 'json',
+                success: function (json)
+                {
+                    //$("#span_LinkStatus").html("<font color='green'>链接数据库成功</font>")
+                    layer.msg("链接数据库成功！");
+                    layer.closeAll();
+                    //debugger;
+                    zNodes = json;
+                    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+                },
+                error: function (json)
+                {
+                    //$("#span_LinkStatus").html("<font color='red'>链接数据库失败<br/>失败原因：" + json.responseJSON.ExceptionMessage + "</font>");
+                    layer.msg("链接数据库失败！");
+                }
+            });
+        });
+
+        $('#txt_Key').bind('keydown', function (event)
+        {
+            if(event.keyCode == "13")      
+            {
+                var arr = new Array();
+                var key = $('#txt_Key').val();
+                for (var i = 0; i < zNodes.length; i++)
+                {
+                    if (zNodes[i].name.indexOf(key) > -1 || zNodes[i].name == "表" || zNodes[i].name == "视图")
+                    {
+                        zNodes[i].open = true;
+                        arr.push(zNodes[i]);
+                    }
+                }
+
+                $.fn.zTree.init($("#treeDemo"), setting, arr);
+            }  
+        });
+
+        $("#btn_Create").click(function ()
+        {
+            var colsetting = gridsetting;
+            var colResultArr = new Array();
+            var colName = $('#table_Colunm').dataTable();
+            $("#table_Colunm tbody tr").each(function (trindex)
+            {
+                var obj = new Object();
+                $(this).find("td").each(function (tdindex)
+                {
+                    if (colsetting[tdindex].type == "checkbox")
+                    {
+                        $(this).find("input:first").prop("checked") ? eval("obj." + colsetting[tdindex].data + " = true") : eval("obj." + colsetting[tdindex].data + " = false");
+                    } else
+                    {
+                        eval("obj." + colsetting[tdindex].data + " = $(this).html();");
+                    }
+                     
+                });
+                colResultArr.push(obj);
+            });
+
+            CreateModelQueryInput(colResultArr);
+            CreateModelQueryOutput(colResultArr);
+            //var alldata = $('#table_Colunm').dataTable().fnGetData();
+            //debugger;
+            //$('#table_Colunm').dataTable().fnUpdate('a', 1, 3); //coll 
+        });
+
+    })
+    //生成代码1：
+    function CreateModelQueryInput(arr)
+    {
+        $("#ModelQueryInput").html("<textarea id='txt_ModelQueryInput'></textarea>");
+        var str = "";
+        str = str + "";
+
+        str = str + "public class LargePackageQueryInput: PagedAndSortedResultRequestDto, IShouldNormalize" + "\n";
+        str = str + "{" + "\n";
+
+        for (var i = 0; i < arr.length; i++)
+        {
+            if (arr[i].IsQueryInput ==  true)
+            {
+                str = str + "\t /// <summary> " + "\n";
+                str = str + "\t /// " + arr[i].DurName + "\n";
+                str = str + "\t /// </summary> " + "\n";
+                str = str + "\t public string " + arr[i].Name + " {set;get;}\n";
+                str = str + "" + "\n";
+            }
+            
+        }
+
+        str = str + "}" + "\n";
+
+        $("#txt_ModelQueryInput").val(str);
+        var editor = CodeMirror.fromTextArea(document.getElementById("txt_ModelQueryInput"), {
+            //parserfile: ["~/Scripts/codemirror/mode/csharp/tokenizecsharp.js", "~/Scripts/codemirror/mode/csharp/parsecsharp.js"],
+            //stylesheet: "css/csharpcolors.css",
+            mode: "application/xml",
+            styleActiveLine: true, //line选择是是否加亮
+            lineNumbers: true, //是否显示行数
+            lineWrapping: true, //是否自动换行
+        });
+    }
+
+</script>
