@@ -119,8 +119,14 @@
     <Compile Include="MyProjectAppServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryExtensions.cs" />
+    <Compile Include="Sys\Dto\DicDetail.cs" />
+    <Compile Include="Sys\Dto\DicDetailQuery.cs" />
+    <Compile Include="Sys\Dto\DicItemQuery.cs" />
+    <Compile Include="Sys\Dto\DicTypeQuery.cs" />
     <Compile Include="Sys\Dto\SysMenuModule.cs" />
     <Compile Include="Sys\Dto\SysMenus.cs" />
+    <Compile Include="Sys\ISysAppService.cs" />
+    <Compile Include="Sys\SysAppService.cs" />
     <Compile Include="Sys\SysMenuModuleAppService.cs" />
     <Compile Include="Sys\SysMenusAppService.cs" />
     <Compile Include="TestAppService.cs" />

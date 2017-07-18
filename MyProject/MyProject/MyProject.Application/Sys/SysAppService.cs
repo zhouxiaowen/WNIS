@@ -33,7 +33,9 @@ namespace MyProject.Users
         {
             List<DicTypeQueryItem> list = new List<DicTypeQueryItem>();
             //获取一级字典
-            var query = _repositorySys_DicType.GetAll().Where(p => p.DicTypeCode == "0");
+            var query = _repositorySys_DicType.GetAll().ToList();
+            int count = query.Count;
+            query = query.Where(p => p.DicTypeCode == "0").ToList();
             list = (from q in query
                     select new DicTypeQueryItem()
                     {
@@ -43,7 +45,7 @@ namespace MyProject.Users
                     }).OrderBy(p => p.PX).ToList();
             var output = new DicTypeQueryOutput()
             {
-                TotalCount = list.Count,
+                TotalCount = count,
                 Items = new ReadOnlyCollection<DicTypeQueryItem>(list)
             };
             return output;
@@ -61,7 +63,7 @@ namespace MyProject.Users
                 throw new UserFriendlyException("条件不足, 无法查询字典");
             }
             List<DicItemQueryItem> list = new List<DicItemQueryItem>();
-            //获取住院费用明细信息
+            //获取字典表数据
             var query = _repositorySys_DicType.GetAll().ToList();
             int count = query.Count;
             query = query.Where(p => p.DicTypeCode == input.DicTypeCode).ToList();
@@ -104,6 +106,7 @@ namespace MyProject.Users
             list = (from q in query
                     select new DicDetailQueryItem()
                     {
+                        Id = q.Id,
                         DicCode = q.DicCode,
                         Code = q.Code,
                         Name = q.Name,

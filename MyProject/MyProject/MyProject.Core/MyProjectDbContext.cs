@@ -1,4 +1,6 @@
 
+
+
 using System.Data.Common;
 using Abp.EntityFramework;
 using System.Data.Entity;
@@ -12,13 +14,15 @@ namespace MyProject.EntityFramework
         //Example:
         //public virtual IDbSet<User> Users { get; set; }
 		
-		public virtual IDbSet<Sys_MenuModule> Sys_MenuModules { get; set; } 
-		
 		public virtual IDbSet<Sys_LSH> Sys_LSHs { get; set; } 
+		
+		public virtual IDbSet<Sys_MenuModule> Sys_MenuModules { get; set; } 
 		
 		public virtual IDbSet<Sys_User> Sys_Users { get; set; } 
 		
-		public virtual IDbSet<Sys_Menus> Sys_Menuss { get; set; } 
+		public virtual IDbSet<Sys_Dic> Sys_Dics { get; set; } 
+		
+		public virtual IDbSet<Sys_DicType> Sys_DicTypes { get; set; } 
 		
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
