@@ -3,7 +3,7 @@
     //刷新按钮
     $("#btn_Dic_Refresh").on('click', Dic.initDic);
     //新增字典
-    $("#btn_Dic_Add").on('click', Dic.fun_BackReturn);
+    $("#btn_Dic_Add").on('click', Dic.addDicItem);
     //新增项目
     $("#btn_Detail_Add").on('click', function () {
         Dic.editDicDetail("");
@@ -538,7 +538,6 @@ var Dic = (function () {
         editDicDetail: function (id) {
             fun_editDicDetail(id);
         }
-
     };
 })();
 
