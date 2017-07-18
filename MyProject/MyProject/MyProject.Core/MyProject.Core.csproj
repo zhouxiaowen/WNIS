@@ -132,6 +132,12 @@
       <DependentUpon>MyProjectDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys_Dic.cs">
+      <DependentUpon>MyProjectDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sys_DicType.cs">
+      <DependentUpon>MyProjectDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sys_LSH.cs">
       <DependentUpon>MyProjectDbContext.tt</DependentUpon>
     </Compile>

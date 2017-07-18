@@ -248,6 +248,8 @@
     <Content Include="Content\flags\famfamfam-flags.css" />
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="Content\Site.js" />
+    <Content Include="Content\Sys\css\DicManage.css" />
+    <Content Include="Content\Sys\scripts\DicManage.js" />
     <Content Include="Content\Sys\scripts\MenuModule.js" />
     <Content Include="Content\Sys\scripts\Menus.js" />
     <Content Include="Content\Sys\scripts\UserManage.js" />
@@ -1290,6 +1292,7 @@
     <Content Include="Views\Demo\SetDemoValue.cshtml" />
     <Content Include="Views\Sys\MenuModule.cshtml" />
     <Content Include="Views\Sys\Menus.cshtml" />
+    <Content Include="Views\Sys\DicManage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1299,7 +1302,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Sys\css\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\assets\js\datatable\assets\" />
   </ItemGroup>

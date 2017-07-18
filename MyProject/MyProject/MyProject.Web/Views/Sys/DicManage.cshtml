@@ -1,0 +1,186 @@
+﻿@{
+    ViewBag.Title = "数据字典";
+}
+
+<link href="~/Content/Sys/css/DicManage.css" rel="stylesheet" />
+
+<script src="~/Content/Sys/scripts/DicManage.js"></script>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            @*全屏使用*@
+            <div class="widget-header bordered-bottom" style="">
+                <span class="widget-caption"><i class="fa fa-cogs"></i>&nbsp;@ViewBag.Title</span>
+                <div class="widget-buttons">
+                    <a href="#" id="fullscreen-toggler" class="fullscreen">
+                        <i class="glyphicon glyphicon-fullscreen"></i>
+                    </a>
+                    <a href="#" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="sidebar-toggler" href="#">
+                        <i class="fa fa-arrows-h"></i>
+                    </a>
+                </div>
+                <hr />
+            </div>
+
+            <div id="main" class="widget-body no-padding">
+                <div class="container-fluid">
+                    <div class="row" style="padding:10px 0px;">
+                        <div class="col-md-12">
+                            <button class="btn btn-blue" type="button" id="btn_Dic_Refresh"><span class="fa fa-plus"></span>&nbsp;刷新</button>
+                            <button class="btn btn-blue" type="button" id="btn_Dic_Add"><span class="fa fa-plus"></span>&nbsp;新增字典</button>
+                        </div>
+                    </div>
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-3">
+                            <div class="row table-active-left">
+                                <table id="table_DicType" class="table table-striped table-bordered table-scrollable text-center">
+                                    <thead>
+                                        <tr role="row">
+                                            <th> 字典分类 </th>
+                                            <th> 序号 </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row table-active-right-top">
+                                <table id="table_DicItem" class="table table-striped table-bordered table-checkable order-column ">
+                                    <thead>
+                                        <tr>
+                                            <th> 字典编码 </th>
+                                            <th> 字典名称 </th>
+                                            <th> 拼音码 </th>
+                                            <th> 序号 </th>
+                                            <th> 字典描述</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="row text-left">
+                                字典名称：<label id="lbl_zdmc"></label>
+                                <button class="btn btn-blue" type="button" id="btn_Detail_Add"><span class="fa fa-plus"></span>&nbsp;新增</button>
+                            </div>
+                            <div class="row table-active-right-bottom">
+                                <table id="table_DicDetail" class="table table-striped table-bordered table-checkable order-column ">
+                                    <thead>
+                                        <tr>
+                                            <th> 编辑 </th>
+                                            <th> 代码 </th>
+                                            <th> 名称</th>
+                                            <th> 拼音码 </th>
+                                            <th> 序号 </th>
+                                            <th> 描述</th>
+                                            <th> 状态 </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="EditDicItem" style="display:none;">
+    <div class="container-fluid">
+        <form id="EditDicItemForm" onsubmit="return false;">
+            <input type="hidden" id="dicCount" />
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">字典编码：</label>
+                <div class="col-sm-9">
+                    <label id="lbl_zdCode"></label>
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">*字典名称：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_dicName" class="form-control" name="dicname">
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">拼音码：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_dicPym" class="form-control">
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">序号：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_dicPx" class="form-control" name="px">
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">描述：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_dicRemark" class="form-control" name="ms">
+                </div>
+            </div>
+            <div class="Edit-Footer">
+                <button type="submit" class="btn btn-info" id="btn_dic_Submit"><i class="fa fa-check"></i>&nbsp;提交</button>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                <button type="button" class="btn btn-darkorange" id="btn_dic_Cancel"><i class="fa fa-close"></i>&nbsp;取消</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="EditDicDetail" style="display:none;">
+    <div class="container-fluid">
+        <form id="EditDicDetailForm" onsubmit="return false;">
+            <input type="hidden" id="detailId" />
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">*代码：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_detailCode" class="form-control" name="dcode">
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">*名称：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_detailName" class="form-control" name="dname">
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">拼音码：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_detailPym" class="form-control">
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">序号：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_detailPx" class="form-control" name="px">
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">描述：</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="" id="txt_detailRemark" class="form-control" name="ms">
+                </div>
+            </div>
+            <div class="row padding-top-5 form-group">
+                <label class="col-sm-3 control-label text-right" for="inputEmail3">状态：</label>
+                <div class="col-sm-9">
+                    <select id="sel_detailStatus" data-bv-field="country" name="country" class="form-control">
+                        <option value="1">有效</option>
+                        <option value="0">无效</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="Edit-Footer">
+                <button type="submit" class="btn btn-info" id="btn_detail_Submit"><i class="fa fa-check"></i>&nbsp;保存</button>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                <button type="button" class="btn btn-darkorange" id="btn_detail_Cancel"><i class="fa fa-close"></i>&nbsp;取消</button>
+            </div>
+        </form>
+    </div>
+</div>

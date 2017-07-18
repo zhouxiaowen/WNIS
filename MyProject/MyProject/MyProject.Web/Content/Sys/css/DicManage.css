@@ -1,0 +1,28 @@
+﻿.table-active-left {
+    width: 100%;
+    height: 100%;
+    min-height:425px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.table-active-right-top {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.table-active-right-bottom {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.selectedtr {
+    background-color: #D1EEEE;
+}

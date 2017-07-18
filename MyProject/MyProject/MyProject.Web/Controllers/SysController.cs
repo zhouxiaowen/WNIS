@@ -23,5 +23,10 @@ namespace MyProject.Web.Controllers
         {
             return View();
         }
+        // 通用字典
+        public ActionResult DicManage()
+        {
+            return View();
+        }
     }
 }
