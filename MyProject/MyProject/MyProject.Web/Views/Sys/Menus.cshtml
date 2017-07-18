@@ -1,9 +1,4 @@
-
-
-
-
-
-@{
+﻿@{
     ViewBag.Title = "Module";
 }
 
@@ -26,8 +21,8 @@
                 </div>
                 <hr />
             </div>
-            
-            <div  id="main" class="widget-body no-padding">
+
+            <div id="main" class="widget-body no-padding">
                 <div class="container-fluid">
                     <div class="row" style="padding:10px 0px;">
                         <div class="col-md-12">
@@ -37,7 +32,7 @@
                     </div>
                     <div class="row padding-btm-5">
                         <div class="col-md-12 form-inline">
-                            <input type="text" placeholder="请输入关键字" id="TxtKey" class="form-control"  style="width:200px;height:28px;">
+                            <input type="text" placeholder="请输入关键字" id="TxtKey" class="form-control" style="width:200px;height:28px;">
                             &nbsp;
                             <a id="BtnSearch" class="btn btn-blue" href="javascript:void(0);"><i class="fa fa-search"></i>&nbsp;搜索</a>
                         </div>
@@ -50,23 +45,21 @@
                                 <tr role="row">
                                     <th style="width:60px;">编辑</th>
                                     <th style="width:60px;">删除</th>
-									<th>菜单Id</th>
-									<th>上级菜单Id</th>
-									<th>模块编码</th>
-									<th>菜单名称</th>
-									<th>描述</th>
-									<th>级别</th>
-									<th>图标样式</th>
-									<th>Url地址</th>
-									<th>打开目标</th>
-									<th>排序</th>
-									<th>状态</th>
-									<th>最后操作时间</th>
+                                    <th>菜单Id</th>
+                                    <th>上级菜单Id</th>
+                                    <th>模块编码</th>
+                                    <th>菜单名称</th>
+                                    <th>描述</th>
+                                    <th>级别</th>
+                                    <th>图标样式</th>
+                                    <th>Url地址</th>
+                                    <th>打开目标</th>
+                                    <th>排序</th>
+                                    <th>状态</th>
+                                    <th>最后操作时间</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -77,81 +70,81 @@
 
 <div id="SpanEdit" style="display:none;">
     <div class="container-fluid">
-        <form  id="EditForm" onsubmit="return false;">
+        <form id="EditForm" onsubmit="return false;">
             <input type="hidden" id="TxtId" />
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*菜单Id：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtCDId" class="form-control" name="ucdid">
+                    <input type="text" placeholder="" id="TxtCDId" class="form-control" name="ucdid">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*上级菜单Id：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtPId" class="form-control" name="upid">
+                    <input type="text" placeholder="" id="TxtPId" class="form-control" name="upid">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*模块编码：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtModuleCode" class="form-control" name="umodulecode">
+                    <input type="text" placeholder="" id="TxtModuleCode" class="form-control" name="umodulecode">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*菜单名称：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtName" class="form-control" name="uname">
+                    <input type="text" placeholder="" id="TxtName" class="form-control" name="uname">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*描述：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtRemark" class="form-control" name="uremark">
+                    <input type="text" placeholder="" id="TxtRemark" class="form-control" name="uremark">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*级别：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtLevels" class="form-control" name="ulevels">
+                    <input type="text" placeholder="" id="TxtLevels" class="form-control" name="ulevels">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*图标样式：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtIcon" class="form-control" name="uicon">
+                    <input type="text" placeholder="" id="TxtIcon" class="form-control" name="uicon">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*Url地址：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtLinkUrl" class="form-control" name="ulinkurl">
+                    <input type="text" placeholder="" id="TxtLinkUrl" class="form-control" name="ulinkurl">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*打开目标：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtTarget" class="form-control" name="utarget">
+                    <input type="text" placeholder="" id="TxtTarget" class="form-control" name="utarget">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*排序：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtPX" class="form-control" name="upx">
+                    <input type="text" placeholder="" id="TxtPX" class="form-control" name="upx">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*状态：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtStatus" class="form-control" name="ustatus">
+                    <input type="text" placeholder="" id="TxtStatus" class="form-control" name="ustatus">
                 </div>
             </div>
-			<div class="row padding-top-5 form-group">
+            <div class="row padding-top-5 form-group">
                 <label class="col-sm-3 control-label text-right">*最后操作时间：</label>
                 <div class="col-sm-9">
-                    <input type="text"  placeholder=""  id="TxtLastTime" class="form-control" name="ulasttime">
+                    <input type="text" placeholder="" id="TxtLastTime" class="form-control" name="ulasttime">
                 </div>
             </div>
-           
+
             <div class="Edit-Footer">
                 <button type="submit" class="btn btn-info" id="BtnSubmit"><i class="fa fa-check"></i>&nbsp;提交</button>
                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;

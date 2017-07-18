@@ -18,5 +18,10 @@ namespace MyProject.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Menus()
+        {
+            return View();
+        }
     }
 }

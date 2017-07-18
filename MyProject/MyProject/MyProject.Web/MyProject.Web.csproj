@@ -249,6 +249,7 @@
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="Content\Site.js" />
     <Content Include="Content\Sys\scripts\MenuModule.js" />
+    <Content Include="Content\Sys\scripts\Menus.js" />
     <Content Include="Content\Sys\scripts\UserManage.js" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -1288,6 +1289,7 @@
     <Content Include="Views\Sys\UserManage.cshtml" />
     <Content Include="Views\Demo\SetDemoValue.cshtml" />
     <Content Include="Views\Sys\MenuModule.cshtml" />
+    <Content Include="Views\Sys\Menus.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

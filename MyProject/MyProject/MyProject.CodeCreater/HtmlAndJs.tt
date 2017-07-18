@@ -10,11 +10,11 @@
 <#@ include file="SqlHelper.tt" #>
 <# 
 	string controllerName = "Sys";
-	string actionName = "MenuModule";
-	string apiName = "SysMenuModule";
-	string tableName = "Sys_MenuModule";
-	string className = "SysMenuModule";
-	string chinaName = "菜单模块";
+	string actionName = "Menus";
+	string apiName = "SysMenus";
+	string tableName = "Sys_Menus";
+	string className = "SysMenus";
+	string chinaName = "系统菜单";
 
 	DataTable dt =  SqlHelper.GetColumnsByTableName(tableName);
 #>
