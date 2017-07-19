@@ -27,7 +27,7 @@ namespace MyProject.Sys.Dto
         /// <summary>
         /// 排序
         /// </summary>
-        public int PX { get; set; }
+        public int? PX { get; set; }
         /// <summary>
         /// 备注
         /// </summary>
@@ -62,7 +62,7 @@ namespace MyProject.Sys.Dto
         /// <summary>
         /// 排序
         /// </summary>
-        public int PX { get; set; }
+        public int? PX { get; set; }
         /// <summary>
         /// 备注
         /// </summary>

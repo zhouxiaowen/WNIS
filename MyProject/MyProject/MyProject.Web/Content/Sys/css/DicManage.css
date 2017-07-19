@@ -1,10 +1,11 @@
 ﻿.table-active-left {
     width: 100%;
     height: 100%;
-    min-height:425px;
+    min-height: 434px;
     border: 1px solid #ccc;
     overflow-y: scroll;
     overflow-x: hidden;
+    margin: 0px 0px;
 }
 
 .table-active-right-top {
@@ -23,6 +24,15 @@
     overflow-x: hidden;
 }
 
-.selectedtr {
+.divmid {
+    margin: 3px 0px;
+    height:28px;
+}
+
+td.selectedtr {
     background-color: #D1EEEE;
+}
+
+table.dataTable tbody tr.selected {
+    background-color: #b0bed9;
 }

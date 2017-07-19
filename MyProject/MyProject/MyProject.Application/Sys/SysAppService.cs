@@ -175,6 +175,7 @@ namespace MyProject.Users
                     DicName = input.DicName,
                     PX = input.PX,
                     PYM = input.PYM,
+                    CreateTime = DateTime.Now,
                     Remark = input.Remark
                 };
                 _repositorySys_DicType.Insert(model);
@@ -209,6 +210,7 @@ namespace MyProject.Users
                         Name = input.Name,
                         PX = input.PX,
                         PYM = input.PYM,
+                        CreateTime = DateTime.Now,
                         Remark = input.Remark
                     };
                     _repositorySys_Dic.Insert(model);
@@ -227,6 +229,8 @@ namespace MyProject.Users
                     model.PX = input.PX;
                     model.PYM = input.PYM;
                     model.Remark = input.Remark;
+                    model.CreateTime = DateTime.Now;
+                    model.UpdateTime = DateTime.Now;
                     _repositorySys_Dic.Update(model);
                 }
                 else

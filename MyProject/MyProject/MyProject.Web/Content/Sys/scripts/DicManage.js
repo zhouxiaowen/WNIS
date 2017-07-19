@@ -1,12 +1,13 @@
 ﻿$(function () {
     //初始化
     Dic.initDic();
+    //绑定事件
+    Dic.bindEvent();
 });
 
 var Dic = (function () {
-    var dicTypeData, dicItemData, dicDetailData; //当前字典大类,字典项目,字典明细信息
+    var dicTypeData, dicItemData; //当前字典大类,字典项目,字典明细信息
     var _curDicType, _curDicItem; //当前字典大类,字典项目
-    var _typeIndex = -1, _itemIndex = -1;//当前大类,项目索引
     //加载字典大类Table
     function initDicTypeTable() {
         if ($.fn.dataTable.isDataTable('#table_DicType')) {
@@ -15,6 +16,17 @@ var Dic = (function () {
         else {
             var table = $("#table_DicType").DataTable(
              {
+                 columnDefs:
+                 [
+                      {
+                          targets: 0,
+                          data: null,
+                          render: function (data, type, row, meta) {
+                              var actions = "<input type='hidden' data-id='" + row.DicCode + "'  data-name='" + data + "' />" + data;
+                              return actions;
+                          }
+                      }
+                 ],
                  ajax: function (data, callback, settings) {
                      var input = $.dataTablesToAbpInput(data, settings);
                      abp.ui.setBusy("#main",
@@ -73,6 +85,7 @@ var Dic = (function () {
                 'selectRows'
                  ]
              });
+
         }
     }
     //加载字典项目Table,参数:dlid(字典大类ID)
@@ -83,6 +96,17 @@ var Dic = (function () {
         else {
             var table = $("#table_DicItem").DataTable(
              {
+                 columnDefs:
+                 [
+                      {
+                          targets: 0,
+                          data: null,
+                          render: function (data, type, row, meta) {
+                              var actions = "<input type='hidden' data-id='" + row.DicCode + "'  data-name='" + row.DicName + "' />" + data;
+                              return actions;
+                          }
+                      }
+                 ],
                  ajax: function (data, callback, settings) {
                      var input = $.dataTablesToAbpInput(data, settings);
                      input.DicTypeCode = _curDicType;
@@ -141,6 +165,7 @@ var Dic = (function () {
                 'selectRows'
                  ]
              });
+
         }
     }
     //加载字典项目Table
@@ -160,17 +185,12 @@ var Dic = (function () {
                              if (data.Success) {
                                  if (data.Result != null && data.Result != "") {
                                      var Items = data.Result.Items;
-                                     dicDetailData = Items;
                                      var response = {};
                                      response.draw = input.Sequence;
                                      response.recordsTotal = Items.length;
                                      response.recordsFiltered = Items.length;
                                      response.data = Items;
                                      callback(response);
-                                     //绑定字典项目表格事件
-                                     $("#table_DicDetail tbody").find("input").off('click').on("click", function () {
-                                         fun_SelectReturnDetail(this);
-                                     });
                                  }
                                  else {
                                      abp.message.warn("获取字典明细信息出错。");
@@ -225,77 +245,66 @@ var Dic = (function () {
 
     //行事件--绑定字典大类点击事件
     function bindDicTypeTableEvent() {
+        var table = $('#table_DicType').DataTable();
         //绑定字典大类表格事件
-        $("#table_DicType tbody").find("tr").off('click').on("click", function () {
-            if ($(this).find("td:first").hasClass("selectedtr")) {
-                $(this).find("td").removeClass("selectedtr");
-                //清空字典项目表
-                if ($.fn.dataTable.isDataTable('#table_DicItem')) {
-                    $("#table_DicItem").DataTable().rows().remove().draw();
-                }
-                _typeIndex = -1;
-            } else {
-                //清除当前表格其他选中行
-                $(this).parent().find("td").removeClass("selectedtr");
-                //清除其他表格选中行
-                $("#table_DicItem tbody").find("td").removeClass("selectedtr");
-                $("#table_DicDetail tbody").find("td").removeClass("selectedtr");
-                //选中当前行
-                $(this).find("td").addClass("selectedtr");
-                //清空字典项目表,字典明细表内容, 禁用按钮
-                if ($.fn.dataTable.isDataTable('#table_DicItem')) {
-                    $("#table_DicItem").DataTable().rows().remove().draw();
-                }
-                if ($.fn.dataTable.isDataTable('#table_DicDetail')) {
-                    $("#table_DicDetail").DataTable().rows().remove().draw();
-                }
+        $('#table_DicType tbody').off('click').on('click', 'tr', function () {
+            //清空字典项目表,字典明细表内容, 禁用按钮
+            if ($.fn.dataTable.isDataTable('#table_DicItem')) {
+                $("#table_DicItem").DataTable().rows().remove().draw();
+            }
+            if ($.fn.dataTable.isDataTable('#table_DicDetail')) {
+                $("#table_DicDetail").DataTable().rows().remove().draw();
+            }
+            $("#btn_Detail_Add").addClass("hide");
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+                _curDicType = null;
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
                 $("#lbl_zdmc").html("");
-                _typeIndex = $(this).index();
-                fun_SelectDicType(_typeIndex);
+                if (dicTypeData != null && dicTypeData.length > 0) {
+                    _curDicType = $(this).find("input").attr("data-id");
+                    initDicItemTable()
+                }
+                else {
+                    _curDicType = null;
+                }
             }
         });
     }
     //行事件--绑定字典项目事件
     function bindDicItemTableEvent() {
-        //绑定字典项目表格事件
-        $("#table_DicItem tbody").find("tr").off('click').on("click", function () {
-            if ($(this).find("td:first").hasClass("selectedtr")) {
-                $(this).find("td").removeClass("selectedtr");
-                //清空字典明细表内容
-                if ($.fn.dataTable.isDataTable('#table_DicDetail')) {
-                    $("#table_DicDetail").DataTable().rows().remove().draw();
+        var table = $('#table_DicItem').DataTable();
+        //绑定字典大类表格事件
+        $('#table_DicItem tbody').off('click').on('click', 'tr', function () {
+            //清空字典项目表
+            if ($.fn.dataTable.isDataTable('#table_DicDetail')) {
+                $("#table_DicDetail").DataTable().rows().remove().draw();
+            }
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+                $("#btn_Detail_Add").addClass("hide");
+                _curDicItem = null;
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                if (dicItemData != null && dicItemData.length > 0) {
+                    $("#btn_Detail_Add").removeClass("hide");
+                    _curDicItem = $(this).find("input").attr("data-id");
+                    $("#lbl_zdmc").html($(this).find("input").attr("data-name"));
+                    initDicDetailTable();
                 }
-                _itemIndex = -1;
-            } else {
-                //清除当前表格其他选中行
-                $(this).parent().find("td").removeClass("selectedtr");
-                //清除其他表格选中行
-                $("#table_DicDetail tbody").find("td").removeClass("selectedtr");
-                //选中当前行
-                $(this).find("td").addClass("selectedtr");
-                _itemIndex = $(this).index();
-                fun_SelectDicItem(_itemIndex);
+                else {
+                    $("#lbl_zdmc").html("");
+                    _curDicItem = null;
+                }
             }
         });
     }
 
-    //行事件--选中字典大类触发事件
-    function fun_SelectDicType(index) {
-        if (dicTypeData != null && dicTypeData.length > 0) {
-            var dlid = dicTypeData[index].DicCode;
-            _curDicType = dlid;
-            initDicItemTable()
-        }
-    }
-    //行事件--选中字典项目触发事件
-    function fun_SelectDicItem(index) {
-        if (dicItemData != null && dicItemData.length > 0) {
-            var mxdata = dicItemData[index];
-            _curDicItem = mxdata.DicCode;
-            $("#lbl_zdmc").html(mxdata.DicName);
-            initDicDetailTable();
-        }
-    }
     //新增字典
     function fun_addDicItem() {
         $('#EditDicItemForm').data('bootstrapValidator').validate();
@@ -303,32 +312,40 @@ var Dic = (function () {
             layer.msg("信息填写不完整。");
             return;
         } else {
-
+            var _typeCode = $("#sel_addDicType option:selected").val();
             var input = {};
-            input.DicTypeCode = $("#sel_addDicType option:selected").val();//所属字典分类
+            input.DicTypeCode = _typeCode;//所属字典分类
             input.DicCode = $("#lbl_zdCode").html();
             input.DicName = $("#txt_dicName").val();
-            input.DicPYM = $("#txt_dicPym").val();
-            input.DicPX = $("#txt_dicPx").val();
-            input.DicRemark = $("#txt_dicRemark").val();
+            input.PYM = $("#txt_dicPym").val();
+            input.PX = $("#txt_dicPx").val();
+            input.Remark = $("#txt_dicRemark").val();
             abp.ui.setBusy("#main",
             abp.services.app.Sys.AddDicItem(input)//新增字典
             .done(function (finfo) {
                 if (finfo.Success) {
                     if (finfo.Result.Message == null || finfo.Result.Message == "") {
-                        initDicItemTable();//刷新字典
+                        if (_typeCode == "0") {
+                            initDicTypeTable();//刷新字典
+                        }
+                        else {
+                            initDicItemTable();
+                        }
                         layer.closeAll();
                         abp.notify.success("添加字典成功!");
                     }
                     else {
+                        layer.closeAll();
                         abp.message.warn(finfo.Result.Message);
                     }
                 }
                 else {
+                    layer.closeAll();
                     abp.message.warn(finfo.Error.Message);
                 }
             })
             .fail(function (result) {
+                layer.closeAll();
                 abp.message.error(result);
             })
             );
@@ -340,6 +357,10 @@ var Dic = (function () {
         DicDetailFormValidator();
         $("#btn_detail_Submit").off('click').on('click', fun_saveDicDetail);
         if (id == null || id == "") {
+            if (_curDicItem == null || _curDicItem == "") {
+                layer.msg("未选择字典, 无法添加项目");
+                return;
+            }
             $("#txt_detailCode").prop('disabled', false);
             $("#detailId").val("");
             //页面层
@@ -357,7 +378,7 @@ var Dic = (function () {
             .done(function (finfo) {
                 if (finfo.Success) {
                     if (finfo.Result != null && finfo.Result != "") {
-                        initDicItemTable();//刷新字典
+                        initDicDetailTable();//刷新字典
                         $("#txt_detailCode").prop('disabled', true);
                         $("#detailId").val(id);
                         $("#txt_detailCode").val(finfo.Result.Code);
@@ -381,17 +402,16 @@ var Dic = (function () {
                     }
                 }
                 else {
+                    layer.closeAll();
                     abp.message.warn(finfo.Error.Message);
                 }
             })
             .fail(function (result) {
+                layer.closeAll();
                 abp.message.error(result);
             })
             );
         }
-
-        $("#btn_dic_Submit").off('click').on('click', fun_addDicItem);
-
     }
     //保存字典项目
     function fun_saveDicDetail() {
@@ -400,10 +420,11 @@ var Dic = (function () {
             layer.msg("信息填写不完整。");
             return;
         } else {
-            if (_itemIndex<0) {
-                layer.msg("请选择字典再添加。");
+            if (_curDicItem == null || _curDicItem == "") {
+                layer.msg("未选择字典, 无法保存项目");
                 return;
             }
+
             var input = {};
             if ($("#detailId").val() != null && $("#detailId").val() != "") {
                 input.Id = $("#detailId").val();
@@ -422,17 +443,25 @@ var Dic = (function () {
                     if (finfo.Result.Message == null || finfo.Result.Message == "") {
                         initDicDetailTable();//刷新字典
                         layer.closeAll();
-                        abp.notify.success("添加项目成功!");
+                        if ($("#detailId").val() != null && $("#detailId").val() != "") {
+                            abp.notify.success("编辑项目成功!");
+                        }
+                        else {
+                            abp.notify.success("添加项目成功!");
+                        }
                     }
                     else {
+                        layer.closeAll();
                         abp.message.warn(finfo.Result.Message);
                     }
                 }
                 else {
+                    layer.closeAll();
                     abp.message.warn(finfo.Error.Message);
                 }
             })
             .fail(function (result) {
+                layer.closeAll();
                 abp.message.error(result);
             })
             );
@@ -523,43 +552,41 @@ var Dic = (function () {
         }
         $("#sel_addDicType").html(_html)
     }
-    //绑定事件
-    function bindEvent() {
-        //刷新按钮
-        $("#btn_Dic_Refresh").on('click', Dic.initDic);
-        //新增字典
-        $("#btn_Dic_Add").on('click', Dic.addDicItem);
-        //新增项目
-        $("#btn_Detail_Add").on('click', function () {
-            Dic.editDicDetail("");
-        });
-        //转换拼音码
-        $("#txt_dicName").on('blur', function () {
-            $("#txt_dicPym").val(leachword(makePy($("#txt_dicName").val())));
-        })
-        $("#txt_detailName").on('blur', function () {
-            $("#txt_detailPym").val(leachword(makePy($("#txt_detailName").val())));
-        })
-        //约束排序为数字
-        $("input[name='px']").keyup(function () {  //keyup事件处理 
-            $(this).val($(this).val().replace(/\D|^0/g, ''));
-        }).bind("paste", function () {  //CTR+V事件处理 
-            $(this).val($(this).val().replace(/\D|^0/g, ''));
-        }).css("ime-mode", "disabled");  //CSS设置输入法不可用
-        //关闭弹出框
-        $("#btn_dic_Cancel").click(function () {
-            layer.closeAll();
-        });
-        $("#btn_detail_Cancel").click(function () {
-            layer.closeAll();
-        });
-    }
+
     return {
         //初始化字典查询界面
         initDic: function () {
             //初始化字典大类表格
             initDicTypeTable();
-            bindEvent();
+        },
+        bindEvent: function () {  //绑定事件
+            $("#btn_Dic_Refresh").on('click', Dic.initDic);
+            //新增字典
+            $("#btn_Dic_Add").on('click', Dic.addDicItem);
+            //新增项目
+            $("#btn_Detail_Add").on('click', function () {
+                Dic.editDicDetail("");
+            });
+            //转换拼音码
+            $("#txt_dicName").on('blur', function () {
+                $("#txt_dicPym").val(leachword(makePy($("#txt_dicName").val())));
+            })
+            $("#txt_detailName").on('blur', function () {
+                $("#txt_detailPym").val(leachword(makePy($("#txt_detailName").val())));
+            })
+            //约束排序为数字
+            $("input[name='px']").keyup(function () {  //keyup事件处理 
+                $(this).val($(this).val().replace(/\D|^0/g, ''));
+            }).bind("paste", function () {  //CTR+V事件处理 
+                $(this).val($(this).val().replace(/\D|^0/g, ''));
+            }).css("ime-mode", "disabled");  //CSS设置输入法不可用
+            //关闭弹出框
+            $("#btn_dic_Cancel").click(function () {
+                layer.closeAll();
+            });
+            $("#btn_detail_Cancel").click(function () {
+                layer.closeAll();
+            });
         },
         //添加字典
         addDicItem: function () {
@@ -567,7 +594,7 @@ var Dic = (function () {
             DicItemFormValidator();
             var count = parseInt($("#dicCount").val());
             if (isNaN(count)) { abp.message.warn("获取字典数量失败"); return; }
-            $("#lbl_zdCode").html("Dic" + (count + 1));
+            $("#lbl_zdCode").html("Dic" + ((count + 1) < 10 ? '00' + (count + 1) : count < 100 ? '0' + (count + 1) : (count + 1)));
             $("#btn_dic_Submit").off('click').on('click', fun_addDicItem);
             //页面层
             layer.open({
